@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -185,4 +184,8 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void getHomeData(BuildContext context) async {}
+
+  void resetToInitial() {
+    emit(InitialAppStates());
+  }
 }

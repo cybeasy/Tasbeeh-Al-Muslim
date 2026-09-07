@@ -1,5 +1,5 @@
 import 'package:nb_utils/nb_utils.dart';
-import 'package:tsbeh/models/hadesModel.dart';
+import 'package:tsbeh/models/HadesModel.dart';
 
 import '../../../models/Base/ApiModel.dart';
 

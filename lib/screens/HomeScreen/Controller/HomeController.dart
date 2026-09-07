@@ -1,4 +1,4 @@
-import 'package:tsbeh/appRoutes.dart';
+import 'package:tsbeh/AppRoutes.dart';
 
 import '../../../Bloc/AppCubit.dart';
 import '../../../models/Base/ApiModel.dart';

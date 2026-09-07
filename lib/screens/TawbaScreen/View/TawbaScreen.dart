@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:tsbeh/appRoutes.dart';
+import 'package:tsbeh/AppRoutes.dart';
 import 'package:tsbeh/main.dart';
 
 import '../../../models/Base/ApiModel.dart';

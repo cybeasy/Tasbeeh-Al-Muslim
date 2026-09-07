@@ -9,7 +9,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:tsbeh/appRoutes.dart';
+import 'package:tsbeh/AppRoutes.dart';
 
 import '../../../Bloc/AppCubit.dart';
 import '../../../Bloc/AppStates.dart';

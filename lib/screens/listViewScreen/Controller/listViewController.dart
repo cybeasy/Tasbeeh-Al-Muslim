@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:tsbeh/models/hadesModel.dart';
+import 'package:tsbeh/models/HadesModel.dart';
 
 import '../../../models/AzkarElyomeModel.dart';
 import '../../../models/Base/ApiModel.dart';

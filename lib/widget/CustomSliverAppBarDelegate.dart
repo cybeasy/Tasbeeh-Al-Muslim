@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:tsbeh/appRoutes.dart';
+import 'package:tsbeh/AppRoutes.dart';
 import 'package:tsbeh/main.dart';
 import 'package:tsbeh/screens/YoutubeVideoScreen/View/YoutubeVideoScreen.dart';
 import 'package:url_launcher/url_launcher.dart';

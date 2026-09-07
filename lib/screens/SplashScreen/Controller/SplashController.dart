@@ -1,4 +1,4 @@
-import 'package:tsbeh/appRoutes.dart';
+import 'package:tsbeh/AppRoutes.dart';
 
 class SplashController {
   final Function() refresh;

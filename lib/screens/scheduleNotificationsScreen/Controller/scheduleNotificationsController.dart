@@ -94,7 +94,7 @@ class scheduleNotificationsController {
     refresh();
     BuildAzkar.stop();
     NotificationService().cancelAll().then((value) {
-      cubit.emit(InitialAppStates());
+      cubit.resetToInitial();
       loading = false;
 
       AppRoutes.back();

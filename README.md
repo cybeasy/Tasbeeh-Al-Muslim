@@ -26,6 +26,42 @@ Development is done in the "develop" branch and the "main" branch reflects the s
 
 Thanks 😀
 
+## 🤖 AI-Assisted Development (TailorAI Agent)
+
+This project is equipped with an AI Architecture & Runtime Protocol in [`.tailorai/Agent.md`](.tailorai/Agent.md). It guides AI coding assistants (such as **Google Antigravity**, **Claude Code**, **Cursor**, or **GitHub Copilot**) to act as a strict Lead Flutter Architect that adheres to Clean Architecture, BLoC state management, and zero-regression principles.
+
+---
+
+### 🧭 How to Add Any Feature Using the Agent
+
+Contributors can use the AI Agent to build features safely through 4 structured steps:
+
+1. **Invoke the Protocol:**
+   Reference the agent constitution in your AI prompt:
+   > `@.tailorai/Agent.md We want to add a feature: [Brief description of the feature]`  
+   > *Example:* `@.tailorai/Agent.md Add weekly Friday reminder for Surah Al-Kahf with a toggle in settings.`
+
+2. **Automated Planning & Task Creation:**
+   - The Agent inspects [`.tailorai/PROJECT_MAP.md`](.tailorai/PROJECT_MAP.md) to locate the relevant application modules.
+   - It generates a dedicated, self-contained task specification file in `.tailorai/Tasks/`.
+   - It registers the task in [`.tailorai/ACTIVE_TASKS.md`](.tailorai/ACTIVE_TASKS.md) and presents an atomic step-by-step implementation plan.
+
+3. **Atomic Approval Loop:**
+   - **No code is modified without approval:** The Agent waits for your explicit confirmation (`"Proceed"` or `"Approved"`).
+   - It executes **one sub-task at a time**, updates the implementation audit log, and stops to request review before continuing to the next step.
+
+4. **Verification & Archiving:**
+   - The Agent verifies the changes via `flutter analyze` ensuring **0 compilation errors**.
+   - Upon your final confirmation, the task is archived in [`.tailorai/PROJECT_MAP.md`](.tailorai/PROJECT_MAP.md) and cleared from [`.tailorai/ACTIVE_TASKS.md`](.tailorai/ACTIVE_TASKS.md).
+
+---
+
+### 🛡️ Why Use This System?
+- **Zero Regressions:** Prevents accidental breakage of existing audio, prayer, or database services.
+- **Full Traceability:** Every feature or bug fix has a permanent, audited record in `.tailorai/Tasks/`.
+- **Clean Architecture & Separation of Concerns:** Enforces clear boundaries between UI widgets, BLoC cubits, SQLite models, and audio background services.
+- **Effortless Contributor Onboarding:** Any new developer can understand the entire project architecture and task history in minutes via [`.tailorai/PROJECT_MAP.md`](.tailorai/PROJECT_MAP.md).
+
 ## ✨ Requirements
 
 - Any Operating System (ie. MacOS X, Linux, Windows)
