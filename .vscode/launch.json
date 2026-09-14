@@ -1,47 +1,99 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "name": "tsbehFlutter",
             "request": "launch",
             "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
             "flutterMode": "debug"
+        },
+        {
+            "name": "tsbehFlutter (Android Emulator)",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
+            "deviceId": "emulator-5554",
+            "flutterMode": "debug",
+            "args": ["--no-pub"]
         },
         {
             "name": "tsbehFlutter (profile mode)",
             "request": "launch",
             "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
             "flutterMode": "profile"
         },
         {
             "name": "tsbehFlutter (release mode)",
             "request": "launch",
             "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
             "flutterMode": "release"
         },
         {
+            "name": "tsbehFlutter (Web - Chrome)",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
+            "deviceId": "chrome"
+        },
+        {
+            "name": "tsbehFlutter (Web - Chrome No CORS)",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
+            "deviceId": "chrome",
+            "args": [
+                "--web-browser-flag=--disable-web-security"
+            ]
+        },
+        {
+            "name": "tsbehFlutter (Web Server)",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "code",
+            "program": "code/lib/main.dart",
+            "deviceId": "web-server",
+            "args": [
+                "--web-port=8080"
+            ]
+        },
+        {
             "name": "Build an APK Release",
-            "command": "flutter build apk --release",
+            "command": "cd code && flutter build apk --release",
             "request": "launch",
             "type": "node-terminal"
         },
         {
             "name": "Build an appbundle Release",
-            "command": "flutter build appbundle --release",
+            "command": "cd code && flutter build appbundle --release",
             "request": "launch",
             "type": "node-terminal"
         },
         {
             "name": "Build an ipa Release",
-            "command": "flutter build ipa",
+            "command": "cd code && flutter build ipa",
             "request": "launch",
             "type": "node-terminal"
         },
+        {
+            "name": "Build Web Release",
+            "command": "cd code && flutter build web --release --no-tree-shake-icons --base-href /Tasbeeh-Al-Muslim/app/",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "name": "Run Web Server (Python Proxy)",
+            "command": "python3 code/web_server.py",
+            "request": "launch",
+            "type": "node-terminal"
+        }
     ]
 }
-// get simulator path in ios
-// open `xcrun simctl get_app_container booted com.greatideas4ap.taspieh data` -a Finder
-// open `xcrun simctl get_app_container booted com.greatideas4ap.taspieh Bundle` -a Finder

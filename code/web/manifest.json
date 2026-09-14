@@ -1,0 +1,37 @@
+{
+    "name": "تسبيح المسلم - Tasbeeh Al Muslim",
+    "short_name": "تسبيح المسلم",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#121A16",
+    "theme_color": "#1B4D3E",
+    "description": "تطبيق تسبيح المسلم لعرض وسماع الأذكار اليومية والأدعية والسبحة الإلكترونية",
+    "orientation": "portrait-primary",
+    "lang": "ar",
+    "dir": "rtl",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

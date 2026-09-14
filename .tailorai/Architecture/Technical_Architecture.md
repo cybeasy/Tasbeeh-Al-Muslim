@@ -3,86 +3,100 @@
 ## 1. Tech Stack
 | Layer | Technology | Version | Purpose |
 |-------|-----------|---------|---------|
-| Client Framework | Flutter (Dart SDK) | Flutter 3.47.2 / Dart ^3.8.1 | Cross-platform mobile client (Android & iOS primary) |
+| Client Framework | Flutter (Dart SDK) | Flutter 3.47.2 / Dart ^3.8.1 | Cross-platform client (Android, iOS & Web/PWA) |
 | State Management | Flutter BLoC / Cubit | flutter_bloc ^9.1.1, bloc ^9.0.0 | Predictable, reactive state management (AppCubit, ThemeAppCubit) |
-| Local Database | SQLite (sqflite) | sqflite ^2.0.0+4 | Pre-populated offline relational store (`assets/db/databaseV1.db`) |
+| Local Database | SQLite (sqflite + sqflite_common_ffi_web) | sqflite ^2.4.2, ffi_web ^1.1.1 | Cross-platform relational store (native file on mobile, Wasm/IndexedDB on web) |
 | Key-Value Storage | SharedPreferences | shared_preferences ^2.5.3 | Settings, theme mode, quiet hours, cached states (`CashLocal`) |
 | Audio Engine | just_audio + background | just_audio ^0.10.4, just_audio_background ^0.0.1-beta.17 | Offline sound playback and online background streaming with lock screen controls |
 | Notifications | flutter_local_notifications | ^19.4.0 | Timezone-aware scheduled local notifications with custom sound channels |
 | Cloud Services | Firebase Suite | Core ^3.1.1, Analytics ^11.1.0, Crashlytics ^4.0.2, Messaging ^15.0.2 | Telemetry, crash monitoring, and remote push notifications |
 | Networking / Web | http & webview_flutter | http ^1.1.0, webview_flutter ^4.0.1 | Remote audio catalog APIs and offline HTML utility rendering |
+| Client Security Headers | Custom HttpClient | Dart http wrapper | App verification (`X-App-Platform`, `X-App-Version`, `X-App-Client`) |
+| Backend Runtime | PHP | 8.1+ | Lightweight REST JSON endpoints (`/api/v3/`) |
+| Security Engine | Custom PHP Rate Limiter & Bot Filter | sliding window IP limiter | IP-based request throttle (60/min), User-Agent bot block, strict CORS |
+| Web Server | Apache | 2.4+ (mod_rewrite, mod_headers) | Static landing page, Flutter Web SPA routing, API gateway, source code denial |
 | Typography & UI | Google Fonts | google_fonts ^6.2.1 | Cairo Arabic typography with Material 3 theming |
 
 ## 2. Architecture Pattern
 - **Pattern:** Layered Architecture with Controller/View + Cubit State Management.
 - **Separation of Concerns:**
-  - `lib/screens/[ScreenName]/View/`: Declarative UI widgets, responsive layouts, Material 3 theming.
-  - `lib/screens/[ScreenName]/Controller/`: Presentation logic, lifecycle hooks, and interaction handlers.
-  - `lib/Bloc/`: Global state containers (`AppCubit` for navigation/menu, `ThemeAppCubit` for light/dark mode).
-  - `lib/models/`: Domain entities and data models (parsing SQLite rows and JSON envelopes).
-  - `lib/helper/`: Database providers (`dbSQLiteProvider`), caching (`CashLocal`), HTTP client (`http_client.dart`), and extensions.
-  - `lib/Notifications/`: Notification channels and background scheduling services (`NotificationService`).
+  - `code/lib/screens/[ScreenName]/View/`: Declarative UI widgets, responsive layouts, Material 3 theming.
+  - `code/lib/screens/[ScreenName]/Controller/`: Presentation logic, lifecycle hooks, and interaction handlers.
+  - `code/lib/Bloc/`: Global state containers (`AppCubit` for navigation/menu, `ThemeAppCubit` for light/dark mode).
+  - `code/lib/models/`: Domain entities and data models (parsing SQLite rows and JSON envelopes).
+  - `code/lib/helper/`: Database providers (`dbSQLiteProvider`), caching (`CashLocal`), HTTP client (`http_client.dart`), and extensions.
+  - `code/lib/config/`: Centralized environment configurations (`AppConfig.dart`).
+  - `code/lib/Notifications/`: Notification channels and background scheduling services (`NotificationService`).
 
 ## 3. Directory Structure
 ```text
-tsbeh/
-├── .fvm/                               # Flutter Version Management config (Flutter 3.47.2)
-├── android/                            # Native Android project with custom notification sounds
-├── ios/                                # Native iOS project with Podfile and audio background mode
-├── assets/
-│   ├── convertdate.html                # Offline Hijri/Gregorian date converter
-│   ├── db/
-│   │   └── databaseV1.db               # Pre-populated SQLite database (~7.1 MB)
-│   ├── images/                         # Static icons and raster assets
-│   └── sounds/                         # Athkar audio files (MP3/WAV)
-├── lib/
-│   ├── AppRoutes.dart                  # Centralized routing & intent dispatch
-│   ├── main.dart                       # App entry point, background services & DI initialization
-│   ├── firebase_options.dart           # Generated Firebase configuration
-│   ├── Bloc/                           # App-wide Cubits and observers
-│   ├── helper/                         # SQLite provider, HTTP client, local cache, extensions
-│   ├── l10n/                           # Localization ARB files (app_ar.arb, app_en.arb)
-│   ├── language/                       # Localization controllers and delegates
-│   ├── models/                         # Domain models (Zeker, Hadith, Tawba, Audio, Quran)
-│   ├── Notifications/                  # Notification service & channel configurations
-│   ├── screens/                        # Feature screens (HomeScreen, AzkarScreen, AudioPlayer, etc.)
-│   ├── Theme/                          # AppTheme, Material 3 color schemes, typography
-│   └── widget/                         # Reusable UI widgets
-└── .tailorai/                          # AI governance, architecture, and task tracker
+Tasbeeh-Al-Muslim/ (Repository Root)
+├── index.html                          # Marketing Landing Page (with direct Web App buttons)
+├── index2.html                         # Secondary landing page variant
+├── vapp-landing/                       # Landing page styles, scripts, visual assets & vendor libs
+│   └── vendor/                         # Third-party vendor libraries
+├── PrivacyPolicy/                      # Privacy policy document and HTML pages
+├── app/                                # Production Flutter Web build (<base href="/Tasbeeh-Al-Muslim/app/">)
+│   ├── index.html                      # Flutter Web entry point
+│   ├── .htaccess                       # SPA History Routing & Security Headers
+│   ├── sqlite3.wasm                    # Relational database engine for web
+│   └── ...
+├── code/                               # Complete Flutter Mobile & Web Source Code
+│   ├── .env                            # Environment variables (APP_DOMAIN, API_BASE_PATH)
+│   ├── .env.example                    # Template for environment settings
+│   ├── pubspec.yaml                    # Flutter dependencies and asset registrations
+│   ├── .htaccess                       # Source code protection (Require all denied)
+│   ├── android/, ios/, web/            # Platform native implementations
+│   └── lib/
+│       ├── config/AppConfig.dart       # Centralized domain and endpoint resolver
+│       ├── Bloc/AppCubit.dart          # Main application Cubit
+│       ├── helper/connection/          # HttpClient with anti-bot headers
+│       └── ...
+├── api/                                # Backend PHP API v3 with Anti-Bot Engine
+│   └── v3/
+│       ├── security.php                # Multi-Layer Anti-Bot & Rate Limiting Engine
+│       ├── config.php                  # Centralized domain, CORS, and rate limit settings
+│       ├── constants.php               # API action and type definitions
+│       ├── base.php                    # Dynamic base URL calculation
+│       ├── radio.php                   # 177 Islamic Radio stations
+│       ├── mp3Quran_ver2.php           # 241 Quran reciters & 114 surahs
+│       ├── mp3Quran_tafser.php         # Tafsir commentary stations
+│       └── api_test.php                # Automated test harness for API endpoints
+├── scripts/
+│   └── build_server.sh                 # Unified build script (builds into app/)
+└── .htaccess                           # Root Apache config (protects code/ and routes to api/)
 ```
 
 ## 4. Key Design Patterns
-- **Singleton Pattern:** `dbSQLiteProvider.db`, `CashLocal`, `NotificationService` for single-instance resource management.
+- **Singleton Pattern:** `dbSQLiteProvider.db`, `CashLocal`, `NotificationService`, `HttpClient`.
 - **Bloc/Cubit Pattern:** Unidirectional data flow for app modes and global lists.
-- **Adapter / Router Dispatcher:** `AppRoutes.openAction()` dynamically resolves action types (`ApiSubType`) to route destinations.
-- **Observer Pattern:** `observer_bloc.dart` logs state transitions during debugging.
+- **Centralized Configuration:** `AppConfig.dart` on client and `config.php` on server for domain and environment portability.
+- **Multi-Layer Security:** IP Sliding Window Rate Limiting, User-Agent Bot Filtering, and Domain-Restricted CORS.
 
-## 5. API Design & Remote Services
-- **Base Endpoint:** `https://api.4topapps.com/APPS/tsbeh/v3/`
-- **Core Endpoints:**
-  - `mp3Quran_ver2.php`: Quran audio reciters and surah listings.
-  - `radio.php`: Islamic live radio streams catalog.
-  - `mp3Quran_tafser.php`: Quranic audio explanation (Tafseer).
-- **Caching Strategy:** Network responses cached locally via `CashLocal` with fallback to offline data.
+## 5. Web & API v3 Production Architecture (cybeasy.com/Tasbeeh-Al-Muslim/)
 
-## 6. Database Schema (SQLite `databaseV1.db`)
-- **`zeker`**: Pre-configured audio dhikr items, repetition counts, intervals, and display orders.
-  - Columns: `id (INTEGER)`, `zeker_id (VARCHAR)`, `zeker_type_id (INTEGER)`, `zeker_type (VARCHAR)`, `zeker_name (VARCHAR)`, `zeker_repeat (INTEGER)`, `zeker_time (INTEGER)`, `zeker_order (INTEGER)`.
-- **`islam_events`**: Islamic and Hijri historical events.
-  - Columns: `id (INT)`, `h_day`, `h_month`, `h_month_number`, `h_year`, `h_date`, `m_date`, `m_day`, `m_moth`, `m_year`, `title`, `html`.
-- **`azkar_elyome`**: Categorized daily athkar (Morning, Evening, Sleep, etc.).
-  - Columns: `id (INT)`, `categid (INT)`, `categ (VARCHAR)`, `title (LONGTEXT)`.
-- **`doaaquran`**: Supplications directly extracted from the Holy Quran.
-  - Columns: `id (INT)`, `title (LONGTEXT)`, `categ (LONGTEXT)`.
-- **`firstinislam`**: Historic firsts in Islamic history with references.
-  - Columns: `id (INT)`, `categid (INT)`, `categ (VARCHAR)`, `title (LONGTEXT)`, `المصدر (VARCHAR)`, `الرابط (VARCHAR)`.
-- **`hades`**: Prophetic traditions (Hadiths) with push notification markers.
-  - Columns: `id (INT)`, `photo (VARCHAR)`, `titleOrg (LONGTEXT)`, `title (VARCHAR)`, `description (LONGTEXT)`, `html (LONGTEXT)`, `usedforpush (INT)`.
-- **`tawba`**: Prayers, athkar, and supplications of repentance.
-  - Columns: `id (INTEGER)`, `categid (INTEGER)`, `categ (VARCHAR)`, `title (LONGTEXT)`, `count (INTEGER)`, `reference (VARCHAR)`, `soundfile (VARCHAR)`, `time (INTEGER)`.
+### 5.1 System Topology
+```text
+                         [ Browser Visitor / Mobile App ]
+                                         │
+                                         ▼
+                 [ Apache Web Server: cybeasy.com/Tasbeeh-Al-Muslim/ ]
+                                         │
+         ┌───────────────────────────────┼───────────────────────────────┐
+         ▼                               ▼                               ▼
+[ Landing Page: / ]             [ Flutter Web App: /app/ ]      [ PHP API v3: /api/v3/ ]
+- index.html (Marketing)        - index.html (SPA)              - security.php (Anti-Bot)
+- vapp-landing/ assets          - base href: .../app/           - 60 req/min Rate Limiter
+- CTA: Open Web App             - sqlite3.wasm (Wasm FFI)       - Domain-restricted CORS
+                                - SPA .htaccess rewrite         - Radio, Quran, Tafsir
+```
 
-## 7. External Services & Integrations
-- **Firebase Core & Cloud Messaging:** Push notifications and remote campaigns.
-- **Firebase Analytics & Crashlytics:** User telemetry, event tracking, and runtime crash reporting.
-- **Google Play & App Store Review Helper:** Prompting in-app ratings and store reviews.
-- **App Update Notification:** Automatic version comparison (`UpdateNewVer`) against latest store releases.
+### 5.2 Component Breakdown
+- **Frontend SPA (`app/`):** Flutter Web compiled with CanvasKit/HTML. Configured with `<base href="/Tasbeeh-Al-Muslim/app/">` and local `.htaccess` handling HTML5 history routing.
+- **Backend Services (`api/v3/`):** Lightweight PHP 8.x endpoints protected by `security.php`:
+  - `security.php`: IP rate limiter (60 req/min, 429 status), bad bot blocker (403 status), CORS validation.
+  - `config.php`: Centralized domain (`cybeasy.com`), base paths, and rate limits.
+  - `base.php`: Computes `$baseUrl` dynamically relative to `$_SERVER['SCRIPT_NAME']`.
+- **Flutter Client Integration (`code/lib/`):**
+  - `AppConfig.dart`: Resolves full URLs dynamically.
+  - `http_client.dart`: Automatically transmits official client headers (`X-App-Platform`, `X-App-Version`, `X-App-Client`) and normalizes subpath origins on web.

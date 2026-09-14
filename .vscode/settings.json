@@ -1,13 +1,17 @@
 {
+  "dart.projectSearchPaths": [
+    "code"
+  ],
+  "dart.flutterSdkPath": "code/.fvm/versions/3.47.2",
   "sqltools.connections": [
     {
       "previewLimit": 50,
       "driver": "SQLite",
-      "database": "${workspaceFolder:tsbehFlutter}/assets/json/database.db",
+      "database": "${workspaceFolder}/code/assets/json/database.db",
       "name": "database tsbeh"
     }
   ],
   "sqltools.useNodeRuntime": true,
   "cmake.configureOnOpen": false,
-  "dart.flutterSdkPath": ".fvm/versions/3.47.2"
+  "java.compile.nullAnalysis.mode": "automatic"
 }

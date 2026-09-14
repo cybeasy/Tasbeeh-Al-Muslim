@@ -1,9 +1,41 @@
-# Miscellaneous
+# ==============================================================================
+# Git Ignore Configuration for Tasbeeh Al Muslim
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Security & Credentials (CRITICAL - Never Commit)
+# ------------------------------------------------------------------------------
+# Android release signing keys & keystores
+*.jks
+*.keystore
+**/*.jks
+**/*.keystore
+key.jks
+**/key.jks
+code/key.jks
+key.properties
+**/key.properties
+code/android/key.properties
+
+# Environment variables & secrets
+.env
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# ------------------------------------------------------------------------------
+# Miscellaneous & Operating System
+# ------------------------------------------------------------------------------
 *.class
 *.log
 *.pyc
 *.swp
+__pycache__/
+**/__pycache__/
 .DS_Store
+**/.DS_Store
+Thumbs.db
 .atom/
 .build/
 .buildlog/
@@ -12,39 +44,79 @@
 .swiftpm/
 migrate_working_dir/
 
-# IntelliJ related
+# ------------------------------------------------------------------------------
+# IDEs & Editors
+# ------------------------------------------------------------------------------
 *.iml
+**/*.iml
 *.ipr
 *.iws
 .idea/
+**/.idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
+# ------------------------------------------------------------------------------
+# Flutter & Dart
+# ------------------------------------------------------------------------------
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+**/.dart_tool/
 .flutter-plugins
+**/.flutter-plugins
 .flutter-plugins-dependencies
+**/.flutter-plugins-dependencies
 .packages
+**/.packages
 .pub-cache/
+**/.pub-cache/
 .pub/
-/build/
+**/.pub/
+pubspec.lock
+**/.fvm/
 
-# Symbolication related
+# Ephemeral platform build artifacts
+**/ios/Flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+
+# ------------------------------------------------------------------------------
+# Build Outputs
+# ------------------------------------------------------------------------------
+build/
+**/build/
+/dist/
+
+# Android Studio & Gradle
+.gradle/
+**/.gradle/
+local.properties
+**/local.properties
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/android/build/
+**/android/app/build/
+
+# iOS / macOS build files
+**/ios/Pods/
+**/macos/Pods/
+**/ios/.symlinks/
+**/macos/.symlinks/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/Runner.xcworkspace/xcuserdata/
+**/macos/Runner.xcworkspace/xcuserdata/
+
+# Symbolication & Obfuscation
+*.symbols
+*.map.json
 app.*.symbols
-
-# Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
-# FVM Version Cache
-.fvm/
-pubspec.lock
+# ------------------------------------------------------------------------------
+# Production Compiled Web App (Compiled via scripts/build_server.sh)
+# ------------------------------------------------------------------------------
+/app/*
+!/app/.gitkeep

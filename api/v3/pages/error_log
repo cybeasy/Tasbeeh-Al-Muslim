@@ -1,0 +1,2 @@
+[21-Dec-2015 21:05:15 UTC] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/greatide/public_html/APPS/tsbeh/v2/pages/appmaker.php on line 6
+[22-Dec-2015 01:44:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/greatide/public_html/APPS/tsbeh/v2/pages/contenttxt.php:2) in /home/greatide/public_html/APPS/tsbeh/v2/pages/contenttxt.php on line 3
