@@ -8,6 +8,7 @@
 - [ ] `.tailorai/Tasks/bugfix/2026-09-10_fix_tawba_audio_leak_to_quran_player.md`
 
 ## Recently Completed
+- [x] `.tailorai/Tasks/bugfix/2026-09-14_update_app_and_landing_favicons.md`
 - [x] `.tailorai/Tasks/feature/2026-09-14_install_flutter_sdk_and_build_production_web_app.md`
 - [x] `.tailorai/Tasks/refactor/2026-09-14_unify_landing_assets_and_vendor_structure.md`
 - [x] `.tailorai/Tasks/feature/2026-09-13_repository_restructure_and_api_security_hardening.md`

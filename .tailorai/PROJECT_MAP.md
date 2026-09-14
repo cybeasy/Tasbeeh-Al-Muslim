@@ -70,6 +70,7 @@
 - [x] `.tailorai/Tasks/feature/2026-09-08_flutter_web_support.md` — Cross-platform Flutter Web & PWA support, Wasm SQLite database engine, web audio streaming, and responsive layout constraints
 
 ### Bugfixes
+- [x] `.tailorai/Tasks/bugfix/2026-09-14_update_app_and_landing_favicons.md` — Replaced default Flutter icons with official high-resolution brand logo (multi-resolution favicon.ico, favicon.png, apple-touch-icon, and PWA icons with cache busting) across web app and landing page
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_appcubit_provider_not_found_web.md` — Resolved AppCubit ProviderNotFoundException on Flutter Web by standardizing all Bloc/Cubit imports to canonical `package:tsbeh/...` across main.dart, screens, and controllers
 
 ### Upgrades & Migrations
