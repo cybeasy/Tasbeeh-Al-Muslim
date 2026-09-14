@@ -4,8 +4,6 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 import 'package:device_info_plus/device_info_plus.dart';
 
 import '../../models/zekerModel.dart';
@@ -214,50 +212,62 @@ class NotificationService {
 
   static Future<void> askNotifPermissionIfNeeded() async {
     if (kIsWeb) return;
-    if (Platform.isIOS) {
-      await flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin
-          >()
-          ?.requestPermissions(alert: true, badge: true, sound: true);
+    try {
+      if (Platform.isIOS) {
+        await flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+              IOSFlutterLocalNotificationsPlugin
+            >()
+            ?.requestPermissions(alert: true, badge: true, sound: true);
 
-      // لطلب إذن إشعارات Push على iOS
-      await FirebaseMessaging.instance.requestPermission(
-        alert: true,
-        badge: true,
-        sound: true,
-      );
-      return;
-    }
-
-    // ANDROID
-    final androidInfo = await DeviceInfoPlugin().androidInfo;
-    final sdk = androidInfo.version.sdkInt;
-
-    final android = flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin
-        >();
-
-    // 1) Exact Alarms إذا كانت مدعومة (Android 12+)
-    if (sdk >= 31) {
-      await android?.requestExactAlarmsPermission();
-      // على 31–33 قد يفتح شاشة "Alarms & reminders"
-      // على 34+ غالباً لازم المستخدم يفعّلها من الإعدادات (تفتح الشاشة له)
-    }
-
-    // 2) إذن الإشعارات العادي (POST_NOTIFICATIONS) عند الحاجة (Android 13+)
-    // ملاحظة: هذا مستقل عن Exact — لو بتعرض إشعارات على 33+، اطلبه.
-    if (sdk >= 33) {
-      final enabled = await android?.areNotificationsEnabled() ?? true;
-      if (!enabled) {
-        await android?.requestNotificationsPermission();
+        // لطلب إذن إشعارات Push على iOS
+        await FirebaseMessaging.instance.requestPermission(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+        return;
       }
-    }
 
-    // 3) للإصدارات الأقدم من 31: لا يوجد Runtime permissions يمكن طلبها.
-    // لو حابب، تقدر تعرض رسالة ترشد المستخدم لفتح إعدادات التطبيق:
-    // if (sdk < 31) { await openAppSettings(); }  // عبر permission_handler
+      // ANDROID
+      if (Platform.isAndroid) {
+        final androidInfo = await DeviceInfoPlugin().androidInfo;
+        final sdk = androidInfo.version.sdkInt;
+
+        final android = flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
+
+        // 1) إذن الإشعارات الأساسي (POST_NOTIFICATIONS) عند الحاجة (Android 13+)
+        // يطلب أولاً ليظهر الـ Dialog للمستخدم في الواجهة فوراً وبشكل صريح
+        if (sdk >= 33) {
+          final enabled = await android?.areNotificationsEnabled() ?? true;
+          if (!enabled) {
+            await android?.requestNotificationsPermission();
+          }
+        }
+      }
+    } catch (e) {
+      debugPrint("Error requesting notification permission: $e");
+    }
+  }
+
+  static Future<void> askExactAlarmPermissionIfNeeded() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      final sdk = androidInfo.version.sdkInt;
+      if (sdk >= 31) {
+        final android = flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
+        await android?.requestExactAlarmsPermission();
+      }
+    } catch (e) {
+      debugPrint("Error requesting exact alarm permission: $e");
+    }
   }
 
   static void onDidReceiveNotificationResponse(
@@ -291,34 +301,45 @@ class NotificationService {
     //Handle notification tapped logic here
   }
 
+  static Future<bool> canScheduleExact() async {
+    if (kIsWeb || !Platform.isAndroid) return false;
+    try {
+      final android = flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+      return await android?.canScheduleExactNotifications() ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
   Future<void> scheduleLocalNotifications(ZekerModel zekerModel) async {
     if (kIsWeb) return;
-    await createChannel(zekerModel);
+    try {
+      await createChannel(zekerModel);
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-      zekerModel.notficationId!,
-      zekerModel.notficationTitle,
-      zekerModel.notficationBody,
-      zekerModel.notficationScheduledDate!,
-      // tz.TZDateTime.now(tz.local).add( Duration(minutes: minutes)),
-      notificationDetails(zekerModel),
-      // androidAllowWhileIdle: true,
-      // uiLocalNotificationDateInterpretation:
-      //     UILocalNotificationDateInterpretation.absoluteTime,
-      androidScheduleMode: AndroidScheduleMode.alarmClock,
-      matchDateTimeComponents: DateTimeComponents.time,
-      payload: zekerModel.toStringJson(),
-    );
+      AndroidScheduleMode scheduleMode = AndroidScheduleMode.exactAllowWhileIdle;
+      if (Platform.isAndroid) {
+        final canExact = await canScheduleExact();
+        scheduleMode = canExact
+            ? AndroidScheduleMode.exactAllowWhileIdle
+            : AndroidScheduleMode.inexactAllowWhileIdle;
+      }
 
-    /*
-         This shows the notification and repeat every day at the same time.
-          matchDateTimeComponents: DateTimeComponents.time
-
-        This shows the notification and repeat every week (same day of week and time).
-        matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
-
-
-         */
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+        zekerModel.notficationId!,
+        zekerModel.notficationTitle,
+        zekerModel.notficationBody,
+        zekerModel.notficationScheduledDate!,
+        notificationDetails(zekerModel),
+        androidScheduleMode: scheduleMode,
+        matchDateTimeComponents: DateTimeComponents.time,
+        payload: zekerModel.toStringJson(),
+      );
+    } catch (e) {
+      debugPrint("Error scheduling notification ${zekerModel.notficationId}: $e");
+    }
   }
 
   // Future<void> scheduleLocalNotificationsMinutes( int id,   String title,  String body, int minutes) async

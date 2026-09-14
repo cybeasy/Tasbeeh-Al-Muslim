@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:tsbeh/helper/List+ext.dart';
 import 'package:tsbeh/models/IosNativeCall.dart';
 import 'package:tsbeh/models/zekerModel.dart';
 import 'package:tsbeh/services/WebAzkarTimerService.dart';
@@ -31,7 +29,7 @@ class BuildNotifications {
     await removeAllChanel();
   }
 
-  void testPush({ZekerModel? zekerModel}) {
+  Future<void> testPush({ZekerModel? zekerModel}) async {
     NotificationService().cancelAll();
     tz.TZDateTime scheduledDate = tz.TZDateTime.now(tz.local);
 
@@ -54,7 +52,7 @@ class BuildNotifications {
     zekerModel.zeker_order = 0;
 
     // "a1_1"
-    NotificationService().scheduleLocalNotifications(zekerModel);
+    await NotificationService().scheduleLocalNotifications(zekerModel);
     log("test push ${zekerModel.soundFileName()}  ");
   }
 
@@ -261,7 +259,7 @@ class BuildNotifications {
         // }
         generated(i, zTimeList.length);
 
-        NotificationService().scheduleLocalNotifications(zekerModel);
+        await NotificationService().scheduleLocalNotifications(zekerModel);
       }
     }
     // int count = await NotificationService().count();

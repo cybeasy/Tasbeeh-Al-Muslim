@@ -5,6 +5,7 @@
 *(No active tasks currently in progress)*
 
 ## Recently Completed
+- [x] `.tailorai/Tasks/bugfix/2026-09-14_fix_android_startup_permission_and_home_touch_blocking.md`
 - [x] `.tailorai/Tasks/feature/2026-09-10_web_periodic_azkar_engine_and_scheduler.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_view_screen_duaa_loading_web.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_tawba_audio_leak_to_quran_player.md`

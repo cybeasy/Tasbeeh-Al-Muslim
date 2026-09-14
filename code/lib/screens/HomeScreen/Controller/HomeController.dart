@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:tsbeh/AppRoutes.dart';
 
 import 'package:tsbeh/Bloc/AppCubit.dart';
@@ -21,7 +22,7 @@ class HomeController {
     update();
   }
 
-  void openScreenBy(ApiModel model) {
-    AppRoutes.openAction(model, []);
+  void openScreenBy(ApiModel model, {BuildContext? context}) {
+    AppRoutes.openAction(model, [], context: context);
   }
 }

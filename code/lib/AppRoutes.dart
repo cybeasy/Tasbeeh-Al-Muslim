@@ -57,30 +57,30 @@ class AppRoutes {
     navigateAndFinsh(router: HomeScreen());
   }
 
-  static void openAzkarScreen() {
-    navigateTo(router: AzkarScreen());
+  static void openAzkarScreen({BuildContext? context}) {
+    navigateTo(context: context, router: AzkarScreen());
   }
 
-  static void openScheduleNotificationsScreen({bool finsh = false}) {
-    navigateTo(router: scheduleNotificationsScreen(), finsh: finsh);
+  static void openScheduleNotificationsScreen({BuildContext? context, bool finsh = false}) {
+    navigateTo(context: context, router: scheduleNotificationsScreen(), finsh: finsh);
   }
 
-  static void openAction(ApiModel model, List<ApiModel> list) {
+  static void openAction(ApiModel model, List<ApiModel> list, {BuildContext? context}) {
     if (model.subtype == ApiSubType.open) {
     } else if (model.subtype == ApiSubType.Open_list ||
         model.subtype == ApiSubType.Open_list_db) {
-      openlistViewScreen(model);
+      openlistViewScreen(model, context: context);
     } else if (model.subtype == ApiSubType.Open_view) {
-      openView(model);
+      openView(model, context: context);
     } else if (model.subtype == ApiSubType.Open_url) {
       if (model.url!.startsWith("tel")) {
         makeCall(model);
       } else {
-        openUrl(model);
+        openUrl(model, context: context);
       }
     } else if (model.subtype == ApiSubType.Open_about) {
       // openAbout(model);
-      navigateTo(router: ContactusScreen());
+      navigateTo(context: context, router: ContactusScreen());
     } else if (model.subtype == ApiSubType.Open_alert) {
       openAlert(model);
     } else if (model.subtype == ApiSubType.Open_twitter) {
@@ -93,22 +93,23 @@ class AppRoutes {
     } else if (model.subtype == ApiSubType.Open_share) {
       openShare(model);
     } else if (model.subtype == ApiSubType.Open_radio) {
-      openRadio(model, list);
+      openRadio(model, list, context: context);
     } else if (model.subtype == ApiSubType.Open_radio_list) {
-      openRadioList(model);
+      openRadioList(model, context: context);
     } else if (model.subtype == ApiSubType.Open_sound) {
-      openSound(model, list);
+      openSound(model, list, context: context);
     } else if (model.subtype == ApiSubType.Zeker) {
       bool isPlay = BuildAzkar.isPlay();
       if (isPlay == false) {
-        AppRoutes.openAzkarScreen();
+        AppRoutes.openAzkarScreen(context: context);
       } else {
-        AppRoutes.openScheduleNotificationsScreen();
+        AppRoutes.openScheduleNotificationsScreen(context: context);
       }
     } else if (model.subtype == ApiSubType.TawbaHome) {
-      navigateTo(router: TawbaScreen());
+      navigateTo(context: context, router: TawbaScreen());
     } else if (model.subtype == ApiSubType.RunTawba) {
       navigateTo(
+          context: context,
           router: RunTawbaScreen(
         model: model,
       ));
@@ -116,27 +117,28 @@ class AppRoutes {
   }
 
   static void openAbout(ApiModel model) {}
-  static void openRadio(ApiModel model, List<ApiModel> list) {
-    openSound(model, list);
+  static void openRadio(ApiModel model, List<ApiModel> list, {BuildContext? context}) {
+    openSound(model, list, context: context);
   }
 
-  static void openRadioList(ApiModel model) {
-    openlistViewScreen(model);
+  static void openRadioList(ApiModel model, {BuildContext? context}) {
+    openlistViewScreen(model, context: context);
   }
 
-  static void openSound(ApiModel model, List<ApiModel> list) {
-    navigateTo(router: AudioPlayerScreen(model: model, list: list));
+  static void openSound(ApiModel model, List<ApiModel> list, {BuildContext? context}) {
+    navigateTo(context: context, router: AudioPlayerScreen(model: model, list: list));
   }
 
-  static void openlistViewScreen(ApiModel model) {
-    navigateTo(router: listViewScreen(model: model));
+  static void openlistViewScreen(ApiModel model, {BuildContext? context}) {
+    navigateTo(context: context, router: listViewScreen(model: model));
   }
 
-  static void openUrl(ApiModel model) {
+  static void openUrl(ApiModel model, {BuildContext? context}) {
     if (model.appModel == AppModel.convertDate) {
-      navigateTo(router: const ConvertDateScreen());
+      navigateTo(context: context, router: const ConvertDateScreen());
     } else {
       navigateTo(
+          context: context,
           router: WebScreen(model, false, pages.link, urlLink: model.url));
     }
   }
@@ -180,12 +182,13 @@ class AppRoutes {
     launchUrl(emailLaunchUri);
   }
 
-  static void openView(ApiModel model) {
+  static void openView(ApiModel model, {BuildContext? context}) {
     if (model.readFrom == ApiReadFrom.api) {
       navigateTo(
+          context: context,
           router: WebScreen(model, false, pages.api, urlLink: model.url));
     } else {
-      navigateTo(router: ViewScreen(model: model));
+      navigateTo(context: context, router: ViewScreen(model: model));
     }
     // Navigator.push(
     //   context,

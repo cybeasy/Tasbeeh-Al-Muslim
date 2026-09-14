@@ -10,10 +10,8 @@ import 'package:rect_getter/rect_getter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tsbeh/Bloc/AppCubit.dart';
 import 'package:tsbeh/Notifications/Local/NotificationService.dart';
-import 'package:tsbeh/helper/HexColor.dart';
 import 'package:tsbeh/helper/List+ext.dart';
 import 'package:tsbeh/main.dart';
-import 'package:tsbeh/screens/WebScreen/View/WebScreen.dart';
 
 import 'package:tsbeh/Bloc/AppStates.dart';
 import 'package:tsbeh/Bloc/cubit/ThemeAppCubit.dart';
@@ -43,8 +41,15 @@ class HomeScreenState extends State<HomeScreen> {
     _controller = HomeController(refresh);
     _controller.onInit();
 
-    if (!kIsWeb) FirebaseAnalytics.instance.logEvent(name: 'HomeScreen');
-    UpdateNewVer.check(false, context);
+    if (!kIsWeb) {
+      FirebaseAnalytics.instance.logEvent(name: 'HomeScreen');
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await NotificationService.askNotifPermissionIfNeeded();
+        if (mounted) {
+          UpdateNewVer.check(false, context);
+        }
+      });
+    }
 
     PackageInfo.fromPlatform().then((packageInfo) {
       version = packageInfo.version;
@@ -256,32 +261,37 @@ class HomeScreenState extends State<HomeScreen> {
         ),
       );
     } else {
-      return GestureDetector(
-        child: Container(
-          width: 110,
-          height: 140,
-          child: Column(
-            children: [
-              Image.asset(
-                "$assetPath/${temp.photo}",
-                height: 90,
-                width: 90,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(height: 8),
-              Text(
-                temp.title,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+      return Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            _controller.openScreenBy(temp, context: context);
+          },
+          child: Container(
+            width: 110,
+            height: 150,
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Column(
+              children: [
+                Image.asset(
+                  "$assetPath/${temp.photo}",
+                  height: 90,
+                  width: 90,
+                  fit: BoxFit.cover,
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  temp.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        onTap: () {
-          _controller.openScreenBy(temp);
-        },
       );
     }
   }

@@ -73,6 +73,7 @@
 - [x] `.tailorai/Tasks/feature/2026-09-08_flutter_web_support.md` — Cross-platform Flutter Web & PWA support, Wasm SQLite database engine, web audio streaming, and responsive layout constraints
 
 ### Bugfixes
+- [x] `.tailorai/Tasks/bugfix/2026-09-14_fix_android_startup_permission_and_home_touch_blocking.md` — Fixed Android startup touch blocking via post-frame notification permission request, upgraded HomeScreen buttons to InkWell with BuildContext passing, resolved Android 14 exact alarm PlatformException crash with dynamic exact/inexact fallback, and eliminated ANR loop freezing via sequential await scheduling
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_view_screen_duaa_loading_web.md` — Resolved infinite loading spinner in Duaa screen on Web and created native bidirectional Gregorian/Hijri Calendar Converter
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_tawba_audio_leak_to_quran_player.md` — Isolated dedicated AudioPlayer in RunTawbaController with lifecycle disposal preventing audio leaks into Quran audio player
 - [x] `.tailorai/Tasks/bugfix/2026-09-14_update_app_and_landing_favicons.md` — Replaced default Flutter icons with official high-resolution brand logo (multi-resolution favicon.ico, favicon.png, apple-touch-icon, and PWA icons with cache busting) across web app and landing page

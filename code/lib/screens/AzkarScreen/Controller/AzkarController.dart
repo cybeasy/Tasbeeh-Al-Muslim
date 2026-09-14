@@ -1,14 +1,11 @@
+import 'package:tsbeh/Notifications/Local/NotificationService.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io';
-import 'dart:math';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tsbeh/AppRoutes.dart';
 
@@ -155,6 +152,32 @@ class AzkarController {
       if (builder.everyTime.hours == 0 && builder.everyTime.minutes < 3) {
         EasyLoading.showError("اقل وقت للتذكير ٣ دقائق");
         return;
+      }
+
+      final canExact = await NotificationService.canScheduleExact();
+      if (!canExact && context.mounted) {
+        final shouldOpenSettings = await showDialog<bool>(
+          context: context,
+          builder: (dialogCtx) => AlertDialog(
+            title: const Text('تنبيه المواعيد الدقيقة'),
+            content: const Text(
+              'لضمان تشغيل الأذكار في مواعيدها المحددة بدقة بالدقيقة أثناء قفل الشاشة، يرجى تفعيل إذن (المنبهات والتذكيرات) للتطبيق.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(dialogCtx, false),
+                child: const Text('متابعة بدون تفعيل'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(dialogCtx, true),
+                child: const Text('تفعيل الآن'),
+              ),
+            ],
+          ),
+        );
+        if (shouldOpenSettings == true) {
+          await NotificationService.askExactAlarmPermissionIfNeeded();
+        }
       }
     }
 

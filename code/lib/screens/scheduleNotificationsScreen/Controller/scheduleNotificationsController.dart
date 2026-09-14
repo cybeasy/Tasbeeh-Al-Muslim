@@ -207,9 +207,9 @@ class scheduleNotificationsController {
     }
 
     NotificationService().cancelAll();
-    pendingList.forEach((element) async {
+    for (final element in pendingList) {
       await NotificationService().scheduleLocalNotifications(element);
-    });
+    }
     EasyLoading.dismiss();
     update();
   }
