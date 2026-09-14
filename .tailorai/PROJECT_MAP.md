@@ -67,6 +67,8 @@
 - [x] `.tailorai/Tasks/feature/2026-09-12_production_deployment_api_v3_and_server_build.md` — Production server deployment configuration, API v3 migration to cybeasy.com, and automated build script
 
 ### Web & Cross-Platform Support
+- [x] `.tailorai/Tasks/feature/2026-09-14_automated_build_id_and_cache_busting.md` — Automated unique Build ID generation on every server build, script cache busting (`main.dart.js?v=BUILD_ID`), client-side `CacheStorage` auto-purge script, and strict zero-cache `.htaccess` entry-point headers
+- [x] `.tailorai/Tasks/feature/2026-09-14_web_html5_notifications_and_audio_unlock.md` — Multi-platform HTML5 desktop notification engine, user gesture listeners to unlock browser AudioContext autoplay restrictions across refreshes, and periodic Azkar notification integration
 - [x] `.tailorai/Tasks/feature/2026-09-08_flutter_web_support.md` — Cross-platform Flutter Web & PWA support, Wasm SQLite database engine, web audio streaming, and responsive layout constraints
 
 ### Bugfixes

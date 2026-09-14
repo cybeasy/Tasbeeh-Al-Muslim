@@ -6,6 +6,7 @@ import 'package:tsbeh/models/ZekerBuildNotifications/BuildAzkar.dart';
 import 'package:tsbeh/models/ZekerBuildNotifications/SleepHourClass.dart';
 import 'package:tsbeh/models/ZekerBuildNotifications/ZekerTime.dart';
 import 'package:tsbeh/models/zekerModel.dart';
+import 'package:tsbeh/services/web_notification/web_notification.dart';
 
 /// Dedicated periodic Azkar audio service for Flutter Web.
 /// Completely isolated from native Android/iOS alarm services.
@@ -23,9 +24,21 @@ class WebAzkarTimerService {
   /// Resume timer on web startup if user previously enabled Azkar
   Future<void> initOnStartup() async {
     if (!kIsWeb) return;
+
+    // Attach global listener to unlock AudioContext on user's first click/touch
+    WebNotification.attachAudioUnlock(() {
+      _unlockAudio();
+    });
+
     if (BuildAzkar.isPlay()) {
       start();
     }
+  }
+
+  void _unlockAudio() {
+    try {
+      _player.stop();
+    } catch (_) {}
   }
 
   /// Start the periodic timer for Web
@@ -95,6 +108,19 @@ class WebAzkarTimerService {
     final zeker = list[_cursor];
     _cursor = (_cursor + 1) % list.length;
 
+    // 1. Dispatch native HTML5 desktop notification
+    try {
+      WebNotification.show(
+        zeker.zeker_name,
+        "تسبيح المسلم - اذكر الله",
+        icon: "icons/Icon-192.png?v=2",
+        tag: "tasbeeh_zeker",
+      );
+    } catch (e) {
+      debugPrint("WebAzkarTimerService notification dispatch error: $e");
+    }
+
+    // 2. Play audio sound
     await playSingleZeker(zeker);
   }
 

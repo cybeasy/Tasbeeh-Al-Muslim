@@ -116,7 +116,12 @@ if [ "$TEST_API" = true ]; then
     success "API v3 health & security verification passed!"
 fi
 
-# 3. Flutter Web Build (from code/)
+# 3. Automated Build ID Generation & Flutter Web Build
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+GIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "prod")
+BUILD_ID="${TIMESTAMP}-${GIT_HASH}"
+info "Generated unique Build ID: $BUILD_ID"
+
 if [ "$SKIP_BUILD" = false ]; then
     info "Navigating to code/ directory..."
     cd "$PROJECT_ROOT/code"
@@ -124,8 +129,8 @@ if [ "$SKIP_BUILD" = false ]; then
     info "Fetching Flutter dependencies (flutter pub get)..."
     flutter pub get
 
-    info "Building Flutter Web release bundle (base-href: $BASE_HREF)..."
-    flutter build web --release --base-href "$BASE_HREF" --no-tree-shake-icons
+    info "Building Flutter Web release bundle (base-href: $BASE_HREF, build-id: $BUILD_ID)..."
+    flutter build web --release --base-href "$BASE_HREF" --web-define=BUILD_ID="$BUILD_ID" --no-tree-shake-icons
     success "Flutter Web build completed successfully!"
 
     cd "$PROJECT_ROOT"
@@ -148,7 +153,38 @@ if [ -f "code/web/sqlite3.wasm" ] && [ ! -f "$APP_DIR/sqlite3.wasm" ]; then
     cp code/web/sqlite3.wasm "$APP_DIR/sqlite3.wasm"
 fi
 
-# Generate SPA .htaccess inside app/
+# 5. Apply Post-Build Cache-Busting
+# Save Build ID for tracking
+echo "$BUILD_ID" > "$APP_DIR/.last_build_id"
+
+# Inject BUILD_ID into app/index.html
+if [ -f "$APP_DIR/index.html" ]; then
+    info "Injecting Build ID ($BUILD_ID) into $APP_DIR/index.html..."
+    sed -i "s/{{BUILD_ID}}/$BUILD_ID/g" "$APP_DIR/index.html"
+fi
+
+# Inject BUILD_ID into app/flutter_bootstrap.js so main.dart.js is loaded with ?v=$BUILD_ID
+if [ -f "$APP_DIR/flutter_bootstrap.js" ]; then
+    info "Configuring cache-busting in $APP_DIR/flutter_bootstrap.js..."
+    sed -i "s/\"mainJsPath\":\"main\.dart\.js\"/\"mainJsPath\":\"main\.dart\.js?v=$BUILD_ID\"/g" "$APP_DIR/flutter_bootstrap.js"
+    sed -i -E "s/serviceWorkerVersion:\s*\"[^\"]*\"/serviceWorkerVersion: \"$BUILD_ID\"/g" "$APP_DIR/flutter_bootstrap.js"
+fi
+
+# Update version.json with build metadata
+if [ -f "$APP_DIR/version.json" ]; then
+    info "Updating $APP_DIR/version.json with build metadata..."
+    php -r '
+        $file = $argv[1];
+        $buildId = $argv[2];
+        $time = $argv[3];
+        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+        $data["build_id"] = $buildId;
+        $data["build_time"] = $time;
+        file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+    ' "$APP_DIR/version.json" "$BUILD_ID" "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+fi
+
+# 6. Generate SPA .htaccess inside app/ with Cache Invalidation Rules
 info "Generating SPA .htaccess inside $APP_DIR..."
 cat << 'HTACCESS_APP' > "$APP_DIR/.htaccess"
 <IfModule mod_rewrite.c>
@@ -168,6 +204,18 @@ cat << 'HTACCESS_APP' > "$APP_DIR/.htaccess"
     # Security headers for web app
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
+
+    # Strict Cache Prevention for Entry Points
+    <FilesMatch "^(index\.html|flutter_bootstrap\.js|flutter_service_worker\.js|version\.json|manifest\.json)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+    </FilesMatch>
+
+    # Cache media & static assets for 7 days with revalidation
+    <FilesMatch "\.(wasm|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|mp3|ogg)$">
+        Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+    </FilesMatch>
 </IfModule>
 
 <IfModule mod_deflate.c>

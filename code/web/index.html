@@ -16,22 +16,28 @@
   <meta name="description" content="تطبيق تسبيح المسلم لعرض وسماع الأذكار اليومية والأدعية والسبحة الإلكترونية">
   <meta name="theme-color" content="#1B4D3E">
 
+  <!-- Cache Control Meta Tags -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="app-build-id" content="{{BUILD_ID}}">
+
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="تسبيح المسلم">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
-  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png?v=2">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v={{BUILD_ID}}">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png?v={{BUILD_ID}}">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2">
-  <link rel="shortcut icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v={{BUILD_ID}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v={{BUILD_ID}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v={{BUILD_ID}}">
+  <link rel="shortcut icon" href="favicon.ico?v={{BUILD_ID}}">
 
   <title>تسبيح المسلم - أذكار وسبحة إلكترونية</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json?v={{BUILD_ID}}">
 
   <style>
     body {
@@ -76,6 +82,34 @@
     <div class="spinner"></div>
     <div class="app-title">تسبيح المسلم</div>
   </div>
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    (function() {
+      var buildId = "{{BUILD_ID}}";
+      try {
+        var prevBuildId = localStorage.getItem('tasbeeh_app_build_id');
+        if (prevBuildId && prevBuildId !== buildId) {
+          console.log('[CacheBuster] New version detected: ' + buildId + ' (was ' + prevBuildId + '). Clearing caches...');
+          if ('caches' in window) {
+            caches.keys().then(function(names) {
+              for (var i = 0; i < names.length; i++) {
+                caches.delete(names[i]);
+              }
+            });
+          }
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+              for (var i = 0; i < registrations.length; i++) {
+                registrations[i].unregister();
+              }
+            });
+          }
+        }
+        localStorage.setItem('tasbeeh_app_build_id', buildId);
+      } catch (e) {
+        console.warn('[CacheBuster] Error checking cache:', e);
+      }
+    })();
+  </script>
+  <script src="flutter_bootstrap.js?v={{BUILD_ID}}" async></script>
 </body>
 </html>

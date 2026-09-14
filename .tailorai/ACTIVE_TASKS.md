@@ -2,12 +2,13 @@
 
 > Tasks currently being worked on. When a task is fully completed, move it to `PROJECT_MAP.md` and remove it from here.
 
-## In Progress
 - [ ] `.tailorai/Tasks/feature/2026-09-10_web_periodic_azkar_engine_and_scheduler.md`
 - [ ] `.tailorai/Tasks/bugfix/2026-09-10_fix_view_screen_duaa_loading_web.md`
 - [ ] `.tailorai/Tasks/bugfix/2026-09-10_fix_tawba_audio_leak_to_quran_player.md`
 
 ## Recently Completed
+- [x] `.tailorai/Tasks/feature/2026-09-14_automated_build_id_and_cache_busting.md`
+- [x] `.tailorai/Tasks/feature/2026-09-14_web_html5_notifications_and_audio_unlock.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-14_update_app_and_landing_favicons.md`
 - [x] `.tailorai/Tasks/feature/2026-09-14_install_flutter_sdk_and_build_production_web_app.md`
 - [x] `.tailorai/Tasks/refactor/2026-09-14_unify_landing_assets_and_vendor_structure.md`

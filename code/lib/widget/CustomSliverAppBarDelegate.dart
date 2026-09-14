@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:tsbeh/AppRoutes.dart';
 import 'package:tsbeh/main.dart';
-import 'package:tsbeh/screens/YoutubeVideoScreen/View/YoutubeVideoScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:flutter/foundation.dart';
 import 'package:tsbeh/Bloc/cubit/ThemeAppCubit.dart';
+import 'package:tsbeh/services/web_notification/web_notification.dart';
 import '../models/ZekerBuildNotifications/BuildAzkar.dart';
 
 class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
@@ -83,7 +84,11 @@ class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         timeStop =
             "\n" + "يتوقف الذكر من " + builder.sleepTime.toStringFormated();
       }
-      return "التسبيح كل " + time + timeStop;
+      String status = "التسبيح كل " + time + timeStop;
+      if (kIsWeb && !WebNotification.isGranted) {
+        status += "\n(اضغط هنا لتفعيل إشعارات المتصفح)";
+      }
+      return status;
     }
 
     return "خاصيه التسبيح متوقفه";
@@ -121,50 +126,64 @@ class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
                       ? Theme.of(context).colorScheme.onPrimaryContainer
                       : Colors.white)),
           8.height,
-          Container(
-            //height: 80,
-            // margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: boxDecorationWithShadow(
-                backgroundColor: Theme.of(context).colorScheme.background,
-                borderRadius: radius(12),
-                offset: Offset(0, 5)),
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Image.asset(
-                    "$assetPath/logo.png",
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
-                8.width,
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text('التسبيح',
-                            style: boldTextStyle(
-                                size: 20,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer)),
-                        4.height,
-                        Text(getSatutsAzkar(),
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer)),
-                      ],
+          InkWell(
+            borderRadius: radius(12),
+            onTap: () async {
+              if (kIsWeb) {
+                await WebNotification.requestPermission();
+              }
+              bool isPlay = BuildAzkar.isPlay();
+              if (!isPlay) {
+                AppRoutes.openAzkarScreen();
+              } else {
+                AppRoutes.openScheduleNotificationsScreen();
+              }
+            },
+            child: Container(
+              //height: 80,
+              // margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: boxDecorationWithShadow(
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  borderRadius: radius(12),
+                  offset: Offset(0, 5)),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Image.asset(
+                      "$assetPath/logo.png",
+                      height: 80,
+                      width: 80,
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
-                )
-              ],
+                  8.width,
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text('التسبيح',
+                              style: boldTextStyle(
+                                  size: 20,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onPrimaryContainer)),
+                          4.height,
+                          Text(getSatutsAzkar(),
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onPrimaryContainer)),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],

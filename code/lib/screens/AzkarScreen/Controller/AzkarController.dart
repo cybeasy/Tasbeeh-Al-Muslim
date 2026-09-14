@@ -19,6 +19,7 @@ import '../../../models/ZekerBuildNotifications/BuildAzkar.dart';
 import '../../../models/ZekerBuildNotifications/BuildNotifications.dart';
 import '../../../models/zekerModel.dart';
 import 'package:tsbeh/services/WebAzkarTimerService.dart';
+import 'package:tsbeh/services/web_notification/web_notification.dart';
 
 class AzkarController {
   final Function() refresh;
@@ -158,6 +159,10 @@ class AzkarController {
     }
 
     showLoading();
+
+    if (kIsWeb) {
+      await WebNotification.requestPermission();
+    }
 
     Future.delayed(const Duration(milliseconds: 500), () async {
       await buildNotifications.build(builder, context, (i, total) {
