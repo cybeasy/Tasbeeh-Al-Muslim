@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "dart",
             "cwd": "code",
-            "program": "code/lib/main.dart",
+            "program": "lib/main.dart",
             "flutterMode": "debug"
         },
         {
@@ -14,7 +14,7 @@
             "request": "launch",
             "type": "dart",
             "cwd": "code",
-            "program": "code/lib/main.dart",
+            "program": "lib/main.dart",
             "deviceId": "emulator-5554",
             "flutterMode": "debug",
             "args": ["--no-pub"]
