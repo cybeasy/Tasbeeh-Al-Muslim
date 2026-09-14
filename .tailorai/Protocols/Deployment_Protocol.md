@@ -17,6 +17,9 @@ The unified build script automates building the Flutter Web SPA directly into `a
 ./scripts/build_server.sh [OPTIONS]
 ```
 
+> [!NOTE]
+> **Server Build Environment:** The production server (`cpanel.cybeasy.com`) has Flutter SDK installed in `/opt/flutter` (stable channel) with system symlinks in `/usr/local/bin/flutter` and `/usr/local/bin/dart`. `./scripts/build_server.sh` automatically exports the SDK path and compiles production web assets with WebAssembly and JavaScript.
+
 **Supported Options:**
 - `-b, --base-href <HREF>`: Custom base href for web routing (Default: `/Tasbeeh-Al-Muslim/app/`).
 - `-s, --skip-build`: Skip Flutter Web compilation and only sync configuration files.

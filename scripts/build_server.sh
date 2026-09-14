@@ -33,6 +33,9 @@ error() {
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
+# Ensure Flutter and standard system binaries are in PATH
+export PATH="/opt/flutter/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+
 # Options
 APP_DIR="${PROJECT_ROOT}/app"
 BASE_HREF="/Tasbeeh-Al-Muslim/app/"
@@ -102,7 +105,7 @@ if [ "$SKIP_BUILD" = false ]; then
         error "Flutter is not installed or not in PATH. Please install Flutter SDK."
         exit 1
     fi
-    FLUTTER_VER=$(flutter --version | head -n 1)
+    FLUTTER_VER=$(flutter --version 2>&1 | grep -m 1 "Flutter " || echo "Flutter Installed")
     info "Found Flutter: $FLUTTER_VER"
 fi
 

@@ -61,6 +61,7 @@
 - [x] `.tailorai/Tasks/feature/2026-09-07_ai_agent_guide_in_readme.md` — Documented AI-Assisted Development guide in README.md for GitHub contributors
 
 ### Production Deployment & Repository Restructure
+- [x] `.tailorai/Tasks/feature/2026-09-14_install_flutter_sdk_and_build_production_web_app.md` — Installed Flutter SDK 3.47.4 / Dart 3.13.3 on server, configured system PATH and permissions, resolved PHP pcntl warning, and executed full production web build into app/ with 10/10 API verification
 - [x] `.tailorai/Tasks/refactor/2026-09-14_unify_landing_assets_and_vendor_structure.md` — Unified marketing landing assets by nesting vendor/ inside vapp-landing/vendor/, updating index.html and index2.html, and eliminating root directory clutter
 - [x] `.tailorai/Tasks/feature/2026-09-13_repository_restructure_and_api_security_hardening.md` — Clean repository restructuring (root landing, code/, app/, api/v3/), multi-layer anti-bot security engine, environment centralization, and redundant dist removal
 - [x] `.tailorai/Tasks/feature/2026-09-12_production_deployment_api_v3_and_server_build.md` — Production server deployment configuration, API v3 migration to cybeasy.com, and automated build script
