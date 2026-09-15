@@ -257,7 +257,7 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
           child: Container(
             constraints: const BoxConstraints(maxWidth: 650),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -327,7 +327,7 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
       borderRadius: BorderRadius.circular(12),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
         decoration: BoxDecoration(
           color: isSelected ? theme.colorScheme.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
@@ -341,28 +341,32 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
                 ]
               : null,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: 20,
-              color: isSelected
-                  ? theme.colorScheme.onPrimary
-                  : theme.colorScheme.onSurface.withOpacity(0.7),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                size: 18,
                 color: isSelected
                     ? theme.colorScheme.onPrimary
-                    : theme.colorScheme.onSurface.withOpacity(0.8),
+                    : theme.colorScheme.onSurface.withOpacity(0.7),
               ),
-            ),
-          ],
+              const SizedBox(width: 6),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                  color: isSelected
+                      ? theme.colorScheme.onPrimary
+                      : theme.colorScheme.onSurface.withOpacity(0.8),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -373,21 +377,30 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "أدخل التاريخ الميلادي:",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                const Expanded(
+                  child: Text(
+                    "أدخل التاريخ الميلادي:",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: _pickGregorianDate,
-                  icon: const Icon(Icons.date_range, size: 20),
-                  label: const Text("اختيار من التقويم"),
+                  style: TextButton.styleFrom(
+                    visualDensity: VisualDensity.compact,
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  ),
+                  icon: const Icon(Icons.date_range, size: 18),
+                  label: const Text(
+                    "اختيار من التقويم",
+                    style: TextStyle(fontSize: 13),
+                  ),
                 ),
               ],
             ),
@@ -409,9 +422,9 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
                     },
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: _buildDropdown<int>(
                     label: "الشهر",
                     value: _gMonth,
@@ -425,9 +438,9 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
                     },
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: _buildDropdown<int>(
                     label: "السنة",
                     value: _gYear,
@@ -454,13 +467,13 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               "أدخل التاريخ الهجري:",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Row(
@@ -480,9 +493,9 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
                     },
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: _buildDropdown<int>(
                     label: "الشهر",
                     value: _hMonth,
@@ -496,9 +509,9 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
                     },
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: _buildDropdown<int>(
                     label: "السنة",
                     value: _hYear,
@@ -530,7 +543,8 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
     return InputDecorator(
       decoration: InputDecoration(
         labelText: label,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 7, vertical: 6),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
       child: DropdownButtonHideUnderline(
@@ -538,14 +552,19 @@ class _ConvertDateScreenState extends State<ConvertDateScreen> {
           value: value,
           isDense: true,
           isExpanded: true,
+          iconSize: 18,
           onChanged: onChanged,
           items: items.map((T item) {
             return DropdownMenuItem<T>(
               value: item,
-              child: Text(
-                itemText(item),
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 13),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerRight,
+                child: Text(
+                  itemText(item),
+                  maxLines: 1,
+                  style: const TextStyle(fontSize: 13),
+                ),
               ),
             );
           }).toList(),

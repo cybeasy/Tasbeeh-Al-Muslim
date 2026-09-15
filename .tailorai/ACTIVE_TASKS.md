@@ -6,6 +6,9 @@
 
 
 ## Recently Completed
+- [x] `.tailorai/Tasks/frontend/2026-09-15_redesign_landing_page_with_emerald_theme.md`
+- [x] `.tailorai/Tasks/frontend/2026-09-15_arabic_privacy_policy_and_landing_links.md`
+- [x] `.tailorai/Tasks/bugfix/2026-09-15_fix_convert_date_screen_responsive_overflow_mobile.md`
 - [x] `.tailorai/Tasks/feature/2026-09-15_tawba_counter_stop_mode_dialog.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-15_fix_tawba_audio_android_single_player_crash.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-14_fix_android_startup_permission_and_home_touch_blocking.md`
