@@ -61,7 +61,6 @@ class listViewController {
       } catch (e) {
         print('Error in listViewController onInit: $e');
       } finally {
-        isLoading = false;
         hasMoreItems = true;
         update();
       }
@@ -149,8 +148,12 @@ class listViewController {
   Future<List<ApiModel>> getSearchResult(String value) async {
     List<ApiModel> result = [];
 
-    result.addAll(listOrg.where((elment) =>
-        elment.title.contains(value) || elment.description.contains(value)));
+    result.addAll(
+      listOrg.where(
+        (elment) =>
+            elment.title.contains(value) || elment.description.contains(value),
+      ),
+    );
 
     return result;
   }

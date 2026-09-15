@@ -287,7 +287,8 @@ class AzkarScreenState extends State<AzkarScreen>
                     ).onTap(() {
                       if (selectedHours == 0 &&
                           selectedMinutes < 3 &&
-                          !kIsWeb && Platform.isAndroid) {
+                          !kIsWeb &&
+                          Platform.isAndroid) {
                         EasyLoading.showInfo(
                           "اقل وقت للتذكير هو ٣ دقائق",
                           duration: Duration(seconds: 5),
@@ -301,7 +302,8 @@ class AzkarScreenState extends State<AzkarScreen>
                         } else {
                           if (selectedHours == 0 &&
                               selectedMinutes < 25 &&
-                              !kIsWeb && Platform.isIOS) {
+                              !kIsWeb &&
+                              Platform.isIOS) {
                             _controller.builder.sleepTime.stopAt = false;
                             _controller.builder.sleepTime.save();
                           }
@@ -440,7 +442,7 @@ class AzkarScreenState extends State<AzkarScreen>
       2: Padding(
         padding: const EdgeInsets.all(5),
         child: Text(
-          "دعاه",
+          "دعاء",
           style: primaryTextStyle(
             color: _controller.selectedSegmentedListType == 2
                 ? white

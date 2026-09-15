@@ -4,7 +4,10 @@
 
 *(No active tasks currently in progress)*
 
+
 ## Recently Completed
+- [x] `.tailorai/Tasks/feature/2026-09-15_tawba_counter_stop_mode_dialog.md`
+- [x] `.tailorai/Tasks/bugfix/2026-09-15_fix_tawba_audio_android_single_player_crash.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-14_fix_android_startup_permission_and_home_touch_blocking.md`
 - [x] `.tailorai/Tasks/feature/2026-09-10_web_periodic_azkar_engine_and_scheduler.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_view_screen_duaa_loading_web.md`

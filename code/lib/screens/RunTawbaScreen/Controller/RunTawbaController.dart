@@ -1,4 +1,4 @@
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
@@ -17,9 +17,9 @@ class RunTawbaController {
   int count = 0;
   bool isRun = false;
   bool isPlaySound = true;
+  bool stopAtTarget = true;
 
-  final AudioPlayer _audioPlayer = AudioPlayer();
-  late AudioSource audio;
+  AudioSource? audio;
 
   void update() {
     refresh();
@@ -32,30 +32,50 @@ class RunTawbaController {
     update();
   }
 
-  void btnRunCounterClick() {
-    isRun = !isRun;
-    if (isRun) {
-      doInCounter();
+  void startSession({required bool stopAtTarget}) {
+    this.stopAtTarget = stopAtTarget;
+    if (model != null && count >= model!.count) {
+      count = 0;
+    }
+    isRun = true;
+    doInCounter();
+    if (isPlaySound) {
       playSound();
-      runCounter();
+    }
+    runCounter();
+    update();
+  }
+
+  void stopSession() {
+    isRun = false;
+    stopSound();
+    update();
+  }
+
+  void btnRunCounterClick({bool? stopAtTargetMode}) {
+    if (isRun) {
+      stopSession();
     } else {
-      stopSound();
-      update();
+      startSession(stopAtTarget: stopAtTargetMode ?? true);
     }
   }
 
   void showPopup() {
-    EasyLoading.showToast(model?.description ?? "",
-        dismissOnTap: true, duration: Duration(minutes: 1));
+    EasyLoading.showToast(
+      model?.description ?? "",
+      dismissOnTap: true,
+      duration: const Duration(minutes: 1),
+    );
   }
 
   void runCounter() {
     if (isRun == false) {
       update();
     } else {
-      int time = model!.time * 1000;
+      int time = ((model?.time ?? 0) > 0 ? model!.time : 3) * 1000;
 
       Future.delayed(Duration(milliseconds: time), () async {
+        if (!isRun) return;
         doInCounter();
         runCounter();
       });
@@ -65,36 +85,49 @@ class RunTawbaController {
   void doInCounter() {
     count++;
 
-    if (count == model!.count) {
-      EasyLoading.showSuccess(
+    if (model != null && count >= model!.count) {
+      if (stopAtTarget) {
+        isRun = false;
+        stopSound();
+        EasyLoading.showSuccess(
           "غفر الله لك , لقد اتممت العدد جعله الله فى ميزان حسناتك",
           dismissOnTap: true,
-          duration: Duration(minutes: 10));
+          duration: const Duration(minutes: 10),
+        );
+      } else if (count == model!.count) {
+        EasyLoading.showToast(
+          "تم إتمام العدد المحدد (${model!.count})، والمتابعة مستمرة...",
+          dismissOnTap: true,
+          duration: const Duration(seconds: 4),
+        );
+      }
     }
 
     update();
   }
 
   void initSound() async {
-    String path = model!.soundfile;
+    if (model == null || model!.soundfile.trim().isEmpty) return;
+    String path = model!.soundfile.trim();
     audio = AudioSource.asset(
       "assets/sounds/$path",
       tag: MediaItem(
-        id: "1",
+        id: "tawba_${model!.itemId}",
         title: "    ${model!.title}   ",
       ),
     );
 
     try {
-      await _audioPlayer.setAudioSource(audio);
-      await _audioPlayer.setLoopMode(LoopMode.all);
+      await player.stop();
+      await player.setAudioSource(audio!);
+      await player.setLoopMode(LoopMode.all);
     } catch (e) {
-      print("Tawba audio init error: $e");
+      debugPrint("Tawba audio init error: $e");
     }
   }
 
   void checkSound() async {
-    if (isPlaySound) {
+    if (isPlaySound && isRun) {
       playSound();
     } else {
       stopSound();
@@ -103,31 +136,30 @@ class RunTawbaController {
 
   void playSound() async {
     try {
-      if (player.playing) {
-        player.pause();
+      if (audio != null) {
+        player.play();
       }
-      _audioPlayer.play();
     } catch (e) {
-      print("Tawba audio play error: $e");
+      debugPrint("Tawba audio play error: $e");
     }
   }
 
   void stopSound() async {
     try {
-      _audioPlayer.pause();
+      player.pause();
     } catch (e) {
-      print("Tawba audio pause error: $e");
+      debugPrint("Tawba audio pause error: $e");
     }
   }
 
-  void dispose() {
+  void dispose() async {
     isRun = false;
     isPlaySound = false;
     try {
-      _audioPlayer.stop();
-      _audioPlayer.dispose();
+      await player.stop();
+      await player.setLoopMode(LoopMode.off);
     } catch (e) {
-      print("Tawba audio dispose error: $e");
+      debugPrint("Tawba audio dispose error: $e");
     }
   }
 }

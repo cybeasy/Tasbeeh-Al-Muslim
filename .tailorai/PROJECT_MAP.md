@@ -66,6 +66,9 @@
 - [x] `.tailorai/Tasks/feature/2026-09-13_repository_restructure_and_api_security_hardening.md` — Clean repository restructuring (root landing, code/, app/, api/v3/), multi-layer anti-bot security engine, environment centralization, and redundant dist removal
 - [x] `.tailorai/Tasks/feature/2026-09-12_production_deployment_api_v3_and_server_build.md` — Production server deployment configuration, API v3 migration to cybeasy.com, and automated build script
 
+### Features & UX Enhancements
+- [x] `.tailorai/Tasks/feature/2026-09-15_tawba_counter_stop_mode_dialog.md` — Added interactive bottom sheet dialog on "ابدأ" in Tawba screen allowing users to choose between stopping at target count (100) or continuous uninterrupted mode with live counter updates
+
 ### Web & Cross-Platform Support
 - [x] `.tailorai/Tasks/feature/2026-09-10_web_periodic_azkar_engine_and_scheduler.md` — Web periodic Azkar audio playback engine, interval & sleep hours scheduling, and cache-backed notification list
 - [x] `.tailorai/Tasks/feature/2026-09-14_automated_build_id_and_cache_busting.md` — Automated unique Build ID generation on every server build, script cache busting (`main.dart.js?v=BUILD_ID`), client-side `CacheStorage` auto-purge script, and strict zero-cache `.htaccess` entry-point headers
@@ -73,6 +76,7 @@
 - [x] `.tailorai/Tasks/feature/2026-09-08_flutter_web_support.md` — Cross-platform Flutter Web & PWA support, Wasm SQLite database engine, web audio streaming, and responsive layout constraints
 
 ### Bugfixes
+- [x] `.tailorai/Tasks/bugfix/2026-09-15_fix_tawba_audio_android_single_player_crash.md` — Fixed Tawba audio playback crash on Android by removing secondary AudioPlayer instance and adhering to just_audio_background single-instance architecture with strict lifecycle cleanup
 - [x] `.tailorai/Tasks/bugfix/2026-09-14_fix_android_startup_permission_and_home_touch_blocking.md` — Fixed Android startup touch blocking via post-frame notification permission request, upgraded HomeScreen buttons to InkWell with BuildContext passing, resolved Android 14 exact alarm PlatformException crash with dynamic exact/inexact fallback, and eliminated ANR loop freezing via sequential await scheduling
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_view_screen_duaa_loading_web.md` — Resolved infinite loading spinner in Duaa screen on Web and created native bidirectional Gregorian/Hijri Calendar Converter
 - [x] `.tailorai/Tasks/bugfix/2026-09-10_fix_tawba_audio_leak_to_quran_player.md` — Isolated dedicated AudioPlayer in RunTawbaController with lifecycle disposal preventing audio leaks into Quran audio player
