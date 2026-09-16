@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:flutter/services.dart';
 import 'dart:io';
 
 import 'package:in_app_review/in_app_review.dart';
@@ -59,37 +61,53 @@ Future<void> main() async {
   }
 
   WidgetsFlutterBinding.ensureInitialized();
-  await CashLocal.init();
 
+  // Lock orientation to portrait to avoid landscape bugs/crashes on tablets/review bots
   if (!kIsWeb) {
-    await initFirebase();
-
-    await JustAudioBackground.init(
-      androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
-      androidNotificationChannelName: 'Audio playback',
-      androidNotificationOngoing: true,
-    );
-
-    await NotificationService.init();
-
-    await setupTimeZone();
-  } else {
-    await setupTimeZone();
-    await WebAzkarTimerService.instance.initOnStartup();
+    try {
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+      ]);
+    } catch (e) {
+      debugPrint("Orientation lock error: $e");
+    }
   }
 
-  await dbSQLiteProvider.db.database;
-
-  bool isDarkModeOn = CashLocal.getStringCash('IsDark') != "true"
-      ? false
-      : true;
-
+  bool isDarkModeOn = false;
   String lang = "ar";
+
+  try {
+    await CashLocal.init();
+    isDarkModeOn = CashLocal.getStringCash('IsDark') == "true";
+
+    if (!kIsWeb) {
+      await initFirebase();
+
+      await JustAudioBackground.init(
+        androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+        androidNotificationChannelName: 'Audio playback',
+        androidNotificationOngoing: true,
+      );
+
+      await NotificationService.init();
+
+      await setupTimeZone();
+    } else {
+      await setupTimeZone();
+      await WebAzkarTimerService.instance.initOnStartup();
+    }
+
+    await dbSQLiteProvider.db.database;
+  } catch (e, stackTrace) {
+    debugPrint("Startup initialization error: $e\n$stackTrace");
+  }
 
   player = AudioPlayer();
 
   if (!kIsWeb) {
-    checkAppRating();
+    try {
+      checkAppRating();
+    } catch (_) {}
   }
 
   runApp(MyApp(isDarkModeOn, lang));
@@ -97,58 +115,62 @@ Future<void> main() async {
 
 Future<void> initFirebase() async {
   if (kIsWeb) return;
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FlutterError.onError = (errorDetails) {
-    // If you wish to record a "non-fatal" exception, please use `FirebaseCrashlytics.instance.recordFlutterError` instead
-    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  };
-  PlatformDispatcher.instance.onError = (error, stack) {
-    // If you wish to record a "non-fatal" exception, please remove the "fatal" parameter
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ).timeout(const Duration(seconds: 4));
 
-  final messaging = FirebaseMessaging.instance;
+    FlutterError.onError = (errorDetails) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    };
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
 
-  if (Platform.isIOS) {
-    // 1) تأكد إن الإشعارات مسموحة
-    final settings = await messaging.getNotificationSettings();
-    final allowed =
-        settings.authorizationStatus == AuthorizationStatus.authorized ||
-        settings.authorizationStatus == AuthorizationStatus.provisional;
-    if (!allowed) {
-      // المستخدم رافض/لسه ما وافقش → لا تشترك في توبك
-      return;
-    }
+    // Run topic subscriptions in background (non-blocking) so it NEVER delays or blocks runApp()
+    unawaited(_subscribeToTopics());
+  } catch (e, st) {
+    debugPrint("initFirebase error: $e\n$st");
+  }
+}
 
-    // 2) انتظر لحد ما APNS token يبقى متاح (المحاكي مش هيجيب توكن)
-    final apns = await _waitForApnsToken(timeout: const Duration(seconds: 10));
-    if (apns == null) {
-      // لسه مفيش توكن (أو محاكي) → لا تشترك دلوقتي
-      return;
-    }
+Future<void> _subscribeToTopics() async {
+  try {
+    final messaging = FirebaseMessaging.instance;
 
-    // 3) آمن دلوقتي
-    try {
-      await messaging.subscribeToTopic("ios");
-    } catch (e, st) {
-      FirebaseCrashlytics.instance.recordError(
-        e,
-        st,
-        reason: 'subscribeToTopic(ios)',
-      );
+    if (Platform.isIOS) {
+      final settings = await messaging.getNotificationSettings();
+      final allowed =
+          settings.authorizationStatus == AuthorizationStatus.authorized ||
+          settings.authorizationStatus == AuthorizationStatus.provisional;
+      if (!allowed) return;
+
+      final apns = await _waitForApnsToken(timeout: const Duration(seconds: 5));
+      if (apns == null) return;
+
+      try {
+        await messaging.subscribeToTopic("ios").timeout(const Duration(seconds: 5));
+      } catch (e, st) {
+        FirebaseCrashlytics.instance.recordError(
+          e,
+          st,
+          reason: 'subscribeToTopic(ios)',
+        );
+      }
+    } else if (Platform.isAndroid) {
+      try {
+        await messaging.subscribeToTopic("android").timeout(const Duration(seconds: 5));
+      } catch (e, st) {
+        FirebaseCrashlytics.instance.recordError(
+          e,
+          st,
+          reason: 'subscribeToTopic(android)',
+        );
+      }
     }
-  } else if (Platform.isAndroid) {
-    // على أندرويد الاشتراك لا يعتمد على وجود صلاحية وقتها؛ مفيش كراش
-    try {
-      await messaging.subscribeToTopic("android");
-    } catch (e, st) {
-      FirebaseCrashlytics.instance.recordError(
-        e,
-        st,
-        reason: 'subscribeToTopic(android)',
-      );
-    }
+  } catch (e, st) {
+    debugPrint("_subscribeToTopics error: $e\n$st");
   }
 }
 

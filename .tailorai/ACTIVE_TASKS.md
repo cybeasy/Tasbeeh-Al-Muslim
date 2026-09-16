@@ -2,7 +2,7 @@
 
 > Tasks currently being worked on. When a task is fully completed, move it to `PROJECT_MAP.md` and remove it from here.
 
-*(No active tasks currently in progress)*
+- [ ] `.tailorai/Tasks/bugfix/2026-09-16_fix_google_play_broken_functionality_loading_freeze.md`
 
 
 ## Recently Completed

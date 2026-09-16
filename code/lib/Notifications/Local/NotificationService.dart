@@ -137,38 +137,37 @@ class NotificationService {
   // }
 
   static Future<void> init() async {
-    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-        FlutterLocalNotificationsPlugin();
+    try {
+      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+          FlutterLocalNotificationsPlugin();
 
-    // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
-    const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('ic_logo');
+      // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
+      const AndroidInitializationSettings initializationSettingsAndroid =
+          AndroidInitializationSettings('ic_logo');
 
-    final DarwinInitializationSettings initializationSettingsDarwin =
-        DarwinInitializationSettings(
-          requestSoundPermission: true,
-          requestBadgePermission: true,
-          requestAlertPermission: true,
-          // onDidReceiveLocalNotification: onDidReceiveLocalNotification
-        );
+      final DarwinInitializationSettings initializationSettingsDarwin =
+          DarwinInitializationSettings(
+            requestSoundPermission: true,
+            requestBadgePermission: true,
+            requestAlertPermission: true,
+            // onDidReceiveLocalNotification: onDidReceiveLocalNotification
+          );
 
-    // final LinuxInitializationSettings initializationSettingsLinux =
-    //     const LinuxInitializationSettings(
-    //         defaultActionName: 'Open notification');
-    final InitializationSettings initializationSettings =
-        InitializationSettings(
-          android: initializationSettingsAndroid,
-          iOS: initializationSettingsDarwin,
-          // macOS: initializationSettingsDarwin,
-          // linux: initializationSettingsLinux
-        );
+      final InitializationSettings initializationSettings =
+          InitializationSettings(
+            android: initializationSettingsAndroid,
+            iOS: initializationSettingsDarwin,
+          );
 
-    await flutterLocalNotificationsPlugin.initialize(
-      initializationSettings,
-      onDidReceiveNotificationResponse: onDidReceiveNotificationResponse,
-      onDidReceiveBackgroundNotificationResponse:
-          onDidReceiveNotificationResponse,
-    );
+      await flutterLocalNotificationsPlugin.initialize(
+        initializationSettings,
+        onDidReceiveNotificationResponse: onDidReceiveNotificationResponse,
+        onDidReceiveBackgroundNotificationResponse:
+            onDidReceiveNotificationResponse,
+      );
+    } catch (e, st) {
+      debugPrint("NotificationService.init error: $e\n$st");
+    }
   }
 
   // static Future<void> askNotifPermissionIfNeeded() async {
@@ -270,6 +269,7 @@ class NotificationService {
     }
   }
 
+  @pragma('vm:entry-point')
   static void onDidReceiveNotificationResponse(
     NotificationResponse notificationResponse,
   ) async {
@@ -292,6 +292,7 @@ class NotificationService {
   // Future<void> selectNotification(String? payload) async {
   //   //Handle notification tapped logic here
   // }
+  @pragma('vm:entry-point')
   static Future<void> onDidReceiveLocalNotification(
     int id,
     String? title,

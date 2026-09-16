@@ -31,12 +31,22 @@ class dbSQLiteProvider {
     String path = join(documentsDirectory.path, database_name);
     print('The DB path is: ' + path);
 
+    final file = io.File(path);
+    if (await file.exists()) {
+      final length = await file.length();
+      if (length > 0) {
+        print('Database already exists on mobile ($length bytes). Skipping copy.');
+        return;
+      }
+    }
+
     try {
       print('Copying DB on mobile...');
       ByteData data = await rootBundle.load(join('assets/db/', database_name));
       List<int> bytes =
           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-      await io.File(path).writeAsBytes(bytes);
+      await file.writeAsBytes(bytes, flush: true);
+      print('Database successfully copied on mobile.');
     } catch (error) {
       print('Error copying mobile DB: $error');
     }
