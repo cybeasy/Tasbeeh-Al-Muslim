@@ -8,7 +8,7 @@ import 'package:tsbeh/models/zekerModel.dart';
 import 'package:tsbeh/services/WebAzkarTimerService.dart';
 
 import '../../Notifications/Local/NotificationService.dart';
-import '../../main.dart';
+import 'package:tsbeh/main.dart';
 import 'BuildAzkar.dart';
 
 import 'SleepHourClass.dart';

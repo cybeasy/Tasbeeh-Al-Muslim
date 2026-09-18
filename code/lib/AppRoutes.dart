@@ -11,7 +11,7 @@ import 'package:tsbeh/screens/listViewScreen/View/listViewScreen.dart';
 import 'package:tsbeh/screens/scheduleNotificationsScreen/View/scheduleNotificationsScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'main.dart';
+import 'package:tsbeh/main.dart';
 import 'models/Base/ApiModel.dart';
 import 'models/ZekerBuildNotifications/BuildAzkar.dart';
 import 'screens/AzkarScreen/View/AzkarScreen.dart';
@@ -47,8 +47,14 @@ class AppRoutes {
   // ========================================================================================================
   // App init
 
-  static void back() {
-    navigatorKey.currentState?.pop();
+  static void back({BuildContext? context}) {
+    if (context != null && Navigator.canPop(context)) {
+      Navigator.pop(context);
+    } else if (navigatorKey.currentState?.canPop() ?? false) {
+      navigatorKey.currentState?.pop();
+    } else {
+      openHomeScreen();
+    }
   }
 
   static void openSplashScreen() {}

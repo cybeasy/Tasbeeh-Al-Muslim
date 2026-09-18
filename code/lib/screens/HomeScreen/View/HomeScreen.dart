@@ -11,6 +11,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tsbeh/Bloc/AppCubit.dart';
 import 'package:tsbeh/Notifications/Local/NotificationService.dart';
 import 'package:tsbeh/helper/List+ext.dart';
+import 'package:tsbeh/widget/RandomHadithDialog.dart';
 import 'package:tsbeh/main.dart';
 
 import 'package:tsbeh/Bloc/AppStates.dart';
@@ -48,6 +49,15 @@ class HomeScreenState extends State<HomeScreen> {
         if (mounted) {
           UpdateNewVer.check(false, context);
         }
+        if (mounted) {
+          _showInitialRandomHadith();
+        }
+      });
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          _showInitialRandomHadith();
+        }
       });
     }
 
@@ -56,6 +66,16 @@ class HomeScreenState extends State<HomeScreen> {
       code = packageInfo.buildNumber;
       setState(() {});
     });
+  }
+
+  static bool _hasShownInitialHadith = false;
+
+  Future<void> _showInitialRandomHadith() async {
+    if (_hasShownInitialHadith) return;
+    _hasShownInitialHadith = true;
+    await Future.delayed(const Duration(milliseconds: 600));
+    if (!mounted) return;
+    await RandomHadithDialog.show(context);
   }
 
   void refresh() {
@@ -119,8 +139,11 @@ class HomeScreenState extends State<HomeScreen> {
 
   Widget shareAppText() {
     return Padding(
-      padding: EdgeInsets.only(top: 50, bottom: 20, right: 20, left: 20),
-      child: Column(
+      padding: const EdgeInsets.only(top: 50, bottom: 20, right: 20, left: 20),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: () => RandomHadithDialog.show(context),
+        child: Column(
         children: [
           Text(
             """قال رسول الله صلى الله عليه وسلم أنه قال: """,
@@ -144,6 +167,7 @@ class HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
+        ),
       ),
     );
   }

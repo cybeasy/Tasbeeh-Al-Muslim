@@ -11,7 +11,7 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:tsbeh/helper/connection/cash/CashLocal.dart';
 import 'package:tsbeh/screens/AudioPlayerScreen/View/ControlButtons.dart';
 
-import '../../../main.dart';
+import 'package:tsbeh/main.dart';
 import '../../../models/AudioModel/common.dart';
 import '../../../models/Base/ApiModel.dart';
 import '../Controller/AudioPlayerController.dart';

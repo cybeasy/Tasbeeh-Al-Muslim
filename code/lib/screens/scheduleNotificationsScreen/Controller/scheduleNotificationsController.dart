@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 
@@ -11,7 +12,7 @@ import 'package:tsbeh/services/WebAzkarTimerService.dart';
 
 import 'package:tsbeh/Bloc/AppCubit.dart';
 import '../../../Notifications/Local/NotificationService.dart';
-import '../../../main.dart';
+import 'package:tsbeh/main.dart';
 import '../../../models/ZekerBuildNotifications/BuildAzkar.dart';
 import '../../../models/zekerModel.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -124,24 +125,38 @@ class scheduleNotificationsController {
     }
   }
 
-  void stop() {
+  Future<void> stop({BuildContext? context}) async {
     loading = true;
     refresh();
-    BuildAzkar.stop();
-    if (kIsWeb) {
-      WebAzkarTimerService.instance.stop();
-      cubit.resetToInitial();
+    try {
+      BuildAzkar.stop();
+      if (kIsWeb) {
+        WebAzkarTimerService.instance.stop();
+      } else {
+        await NotificationService().cancelAll();
+      }
+
+      try {
+        cubit.resetToInitial();
+      } catch (_) {}
+
       loading = false;
-      AppRoutes.back();
-      return;
+      refresh();
+      EasyLoading.showSuccess("تم إيقاف الأذكار بنجاح");
+
+      await Future.delayed(const Duration(milliseconds: 600));
+
+      if (context != null && context.mounted) {
+        AppRoutes.back(context: context);
+      } else {
+        AppRoutes.openHomeScreen();
+      }
+    } catch (e) {
+      debugPrint("Error stopping azkar: $e");
+      loading = false;
+      refresh();
+      EasyLoading.showError("حدث خطأ أثناء إيقاف الأذكار");
     }
-
-    NotificationService().cancelAll().then((value) {
-      cubit.resetToInitial();
-      loading = false;
-
-      AppRoutes.back();
-    });
   }
 
   void playSound(ZekerModel temp) async {
@@ -206,7 +221,7 @@ class scheduleNotificationsController {
       return;
     }
 
-    NotificationService().cancelAll();
+    await NotificationService().cancelAll();
     for (final element in pendingList) {
       await NotificationService().scheduleLocalNotifications(element);
     }

@@ -10,8 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:tsbeh/AppRoutes.dart';
 
 import 'package:tsbeh/Bloc/AppCubit.dart';
-import 'package:tsbeh/Bloc/AppStates.dart';
-import '../../../main.dart';
+import 'package:tsbeh/main.dart';
 import '../../../models/ZekerBuildNotifications/BuildAzkar.dart';
 import '../../../models/ZekerBuildNotifications/BuildNotifications.dart';
 import '../../../models/zekerModel.dart';
@@ -188,21 +187,33 @@ class AzkarController {
     }
 
     Future.delayed(const Duration(milliseconds: 500), () async {
-      await buildNotifications.build(builder, context, (i, total) {
-        currentGenrated = i;
-        totalGenrated = total;
-        // print("$currentGenrated/$totalGenrated");
-        refresh();
-      });
-      BuildAzkar.play();
+      try {
+        await buildNotifications.build(builder, context, (i, total) {
+          currentGenrated = i;
+          totalGenrated = total;
+          refresh();
+        });
+        BuildAzkar.play();
 
-      cubit.emit(InitialAppStates());
-      hideLoading();
+        try {
+          cubit.resetToInitial();
+        } catch (_) {}
 
-      EasyLoading.showSuccess("تم انشاء الاذكار بنجاح", dismissOnTap: false)
-          .then((value) {
-        AppRoutes.back();
-      });
+        hideLoading();
+        EasyLoading.showSuccess("تم إنشاء الأذكار بنجاح");
+
+        await Future.delayed(const Duration(milliseconds: 700));
+
+        if (context.mounted) {
+          AppRoutes.back(context: context);
+        } else {
+          AppRoutes.openHomeScreen();
+        }
+      } catch (e) {
+        debugPrint("Error building azkar: $e");
+        hideLoading();
+        EasyLoading.showError("حدث خطأ أثناء تشغيل الأذكار");
+      }
     });
   }
 

@@ -74,7 +74,7 @@ class scheduleNotificationsScreenState
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
               onPressed: () {
-                _controller.stop();
+                _controller.stop(context: context);
               },
             ),
           );

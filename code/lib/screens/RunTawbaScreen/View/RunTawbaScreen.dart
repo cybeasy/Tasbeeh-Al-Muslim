@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../../main.dart';
+import 'package:tsbeh/main.dart';
 import '../../../models/Base/ApiModel.dart';
 import '../Controller/RunTawbaController.dart';
 

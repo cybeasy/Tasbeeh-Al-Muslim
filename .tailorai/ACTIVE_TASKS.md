@@ -2,10 +2,13 @@
 
 > Tasks currently being worked on. When a task is fully completed, move it to `PROJECT_MAP.md` and remove it from here.
 
-- [ ] `.tailorai/Tasks/bugfix/2026-09-16_fix_google_play_broken_functionality_loading_freeze.md`
 
 
 ## Recently Completed
+- [x] `.tailorai/Tasks/bugfix/2026-09-18_fix_schedule_notifications_stop_hang_and_navigate_home.md`
+- [x] `.tailorai/Tasks/bugfix/2026-09-18_fix_azkar_creation_navigate_back_to_home.md`
+- [x] `.tailorai/Tasks/feature/2026-09-18_disable_notification_auto_open_and_home_random_hadith_popup.md`
+- [x] `.tailorai/Tasks/bugfix/2026-09-16_fix_google_play_broken_functionality_loading_freeze.md`
 - [x] `.tailorai/Tasks/frontend/2026-09-15_redesign_landing_page_with_emerald_theme.md`
 - [x] `.tailorai/Tasks/frontend/2026-09-15_arabic_privacy_policy_and_landing_links.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-15_fix_convert_date_screen_responsive_overflow_mobile.md`

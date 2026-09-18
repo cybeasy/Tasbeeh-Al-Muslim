@@ -62,7 +62,7 @@ class NotificationService {
       channelDescription: zekerModel.channelDescription,
       sound: RawResourceAndroidNotificationSound(zekerModel.soundFileName()),
       importance: Importance.max,
-      fullScreenIntent: true,
+      fullScreenIntent: false,
       priority: Priority.high,
       playSound: true,
     );

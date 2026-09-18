@@ -10,7 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:tsbeh/Bloc/cubit/ThemeAppCubit.dart';
-import '../../main.dart';
+import 'package:tsbeh/main.dart';
 
 enum Availability { loading, available, unavailable }
 

@@ -8,7 +8,7 @@ import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
 import '../../config/AppConfig.dart';
-import '../../main.dart';
+import 'package:tsbeh/main.dart';
 import 'ApiResponse.dart';
 import 'api_exception.dart';
 import 'cash/CashLocal.dart';

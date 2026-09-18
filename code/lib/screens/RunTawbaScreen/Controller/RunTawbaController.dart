@@ -5,7 +5,7 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:tsbeh/models/Base/ApiModel.dart';
 import 'package:tsbeh/models/TawbaModel.dart';
 
-import '../../../main.dart';
+import 'package:tsbeh/main.dart';
 
 class RunTawbaController {
   final Function() refresh;
