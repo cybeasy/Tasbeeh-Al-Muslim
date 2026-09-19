@@ -33,13 +33,13 @@ import 'package:tsbeh/services/WebAzkarTimerService.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 const assetPath = "assets/images";
 const int DurationHours = 24;
 const dateFormat = 'MMM dd, yyyy';
-late final AudioPlayer player;
+AudioPlayer? _globalPlayer;
+AudioPlayer get player => _globalPlayer ??= AudioPlayer();
 
 // FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 // FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
@@ -102,7 +102,7 @@ Future<void> main() async {
     debugPrint("Startup initialization error: $e\n$stackTrace");
   }
 
-  player = AudioPlayer();
+  _globalPlayer ??= AudioPlayer();
 
   if (!kIsWeb) {
     try {

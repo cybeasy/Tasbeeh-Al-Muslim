@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:tsbeh/AppRoutes.dart';
 
 import '../../../helper/incrementally_loading_listview.dart';
@@ -178,34 +177,38 @@ class listViewScreenState extends State<listViewScreen> {
   }
 
   Widget cell(int index) {
-    return InkWell(
+    final obj = _controller.list[index];
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: ListTile(
         onTap: () {
-          ApiModel obj = _controller.list[index];
           obj.titleParent = widget.model.title;
-          AppRoutes.openAction(obj, _controller.list);
+          AppRoutes.openAction(obj, _controller.list, context: context);
         },
-        child: Card(
-          child: Container(
-              padding: EdgeInsets.only(top: 10, bottom: 5),
-              height: 80,
-              child: ListTile(
-                title: Text(_controller.list[index].title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.onPrimaryContainer)),
-                subtitle: Text(_controller.list[index].description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.onPrimaryContainer)),
-                leading: Icon(Icons.arrow_back_ios),
-              )),
-        ));
+        title: Text(
+          obj.title,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          ),
+        ),
+        subtitle: obj.description.isNotEmpty
+            ? Text(
+                obj.description,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+              )
+            : null,
+        leading: const Icon(Icons.arrow_back_ios),
+      ),
+    );
   }
 
   Widget _buildProgressIndicator() {

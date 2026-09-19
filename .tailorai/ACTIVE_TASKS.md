@@ -2,7 +2,8 @@
 
 > Tasks currently being worked on. When a task is fully completed, move it to `PROJECT_MAP.md` and remove it from here.
 
-
+## In Progress
+- [ ] `.tailorai/Tasks/bugfix/2026-09-19_fix_tawba_screen_buttons_touch_and_navigation.md`
 
 ## Recently Completed
 - [x] `.tailorai/Tasks/bugfix/2026-09-18_fix_schedule_notifications_stop_hang_and_navigate_home.md`

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:tsbeh/AppRoutes.dart';
 import 'package:tsbeh/main.dart';
 
@@ -49,17 +48,15 @@ class TawbaScreenState extends State<TawbaScreen> {
             child: Column(
               children: [
                 character(),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Text(
                   "أريد أن ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color:
-                          Theme.of(context).colorScheme.onSecondaryContainer),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
                 ),
                 buttons(),
               ],
@@ -97,28 +94,35 @@ class TawbaScreenState extends State<TawbaScreen> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            ApiModel model = ApiModel();
+            model.itemId = id.toString();
+            model.title = title;
+
+            model.type = ApiType.open;
+            model.subtype = ApiSubType.RunTawba;
+            model.appModel = AppModel.tawba;
+
+            AppRoutes.openAction(model, [], context: context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
                 fontSize: 20,
-                color: Theme.of(context).colorScheme.onSecondaryContainer),
+                color: Theme.of(context).colorScheme.onSecondaryContainer,
+              ),
+            ),
           ),
         ),
       ),
-    ).onTap(() {
-      ApiModel model = ApiModel();
-      model.itemId = id.toString();
-      model.title = title;
-
-      model.type = ApiType.open;
-      model.subtype = ApiSubType.RunTawba;
-      model.appModel = AppModel.tawba;
-
-      AppRoutes.openAction(model, []);
-    });
+    );
   }
 
   Widget character() {
@@ -128,46 +132,43 @@ class TawbaScreenState extends State<TawbaScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            "$assetPath/charc1.png",
-            height: 300,
-          ),
+          Image.asset("$assetPath/charc1.png", height: 300),
           Expanded(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "أهلا بك فى قسم التوبه",
-                textAlign: TextAlign.center,
-                style: TextStyle(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "أهلا بك فى قسم التوبه",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSecondaryContainer),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "غفر الله لك",
-                textAlign: TextAlign.center,
-                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "غفر الله لك",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSecondaryContainer),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Text(
-                "ماذا تريد ان تفعل؟",
-                textAlign: TextAlign.center,
-                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                ),
+                SizedBox(height: 50),
+                Text(
+                  "ماذا تريد ان تفعل؟",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                     fontSize: 25,
-                    color: Theme.of(context).colorScheme.onSecondaryContainer),
-              )
-            ],
-          ))
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
