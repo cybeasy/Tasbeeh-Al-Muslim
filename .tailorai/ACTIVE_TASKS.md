@@ -8,6 +8,7 @@
 ## Planned Roadmap (Future Tasks)
 - [ ] `.tailorai/Tasks/feature/2026-09-29_audio_azkar_morning_evening_and_custom_scheduler.md`
 - [ ] `.tailorai/Tasks/feature/2026-09-29_ai_voice_assistant_and_intent_actions.md`
+- [ ] `.tailorai/Tasks/feature/2026-09-29_qibla_compass_and_prayer_times_module.md`
 
 ## Recently Completed
 - [x] `.tailorai/Tasks/release/2026-09-29_release_v1_0_21_25_merge_to_main.md`

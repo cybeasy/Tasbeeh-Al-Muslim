@@ -102,6 +102,7 @@
 ### Planned Roadmap (Future Tasks)
 - [ ] `.tailorai/Tasks/feature/2026-09-29_audio_azkar_morning_evening_and_custom_scheduler.md` — Audio Morning/Evening Azkar module with wake-up/bedtime reminder triggers, dedicated continuous audio player, and custom scheduled audio reminders connected to 201+ sound library
 - [ ] `.tailorai/Tasks/feature/2026-09-29_ai_voice_assistant_and_intent_actions.md` — AI Voice Assistant & Natural Language Action Engine with Arabic speech-to-text, intent recognition (Quran playback, Azkar player, periodic dhikr scheduling, and navigation), and floating voice UI
+- [ ] `.tailorai/Tasks/feature/2026-09-29_qibla_compass_and_prayer_times_module.md` — Qibla Direction Compass & Prayer Times with Adhan Notifications (offline astronomical calculation engine, multiple calculation methods, Adhan audio alerts, interactive Kaaba compass, GPS and manual offline city support, and HomeScreen next-prayer banner)
 
 ## 4. Strict AI Operating Protocol (Always Active)
 1. **Context Isolation:** NEVER attempt to read all folders at once. Consult this `PROJECT_MAP.md` first, then request to read ONLY the specific subdirectory relevant to the current task.
