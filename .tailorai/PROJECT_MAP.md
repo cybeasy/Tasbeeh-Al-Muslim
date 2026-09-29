@@ -56,6 +56,9 @@
 - **Automated Health Harness:** `api/v3/api_test.php`
 
 ## 3. Tasks Archive & History
+### Releases
+- [x] `.tailorai/Tasks/release/2026-09-29_release_v1_0_21_25_merge_to_main.md` — Released production version v1.0.21+25, merged stable Development branch into main with merge commit 87bbbd5, created git tag v1.0.21+25, and pushed to remote origin
+
 ### Governance & Architecture Setup
 - [x] `.tailorai/Tasks/feature/2026-09-07_initial_project_setup.md` — Project initialized with AI Agent workspace & architecture documentation
 - [x] `.tailorai/Tasks/feature/2026-09-07_ai_agent_guide_in_readme.md` — Documented AI-Assisted Development guide in README.md for GitHub contributors
