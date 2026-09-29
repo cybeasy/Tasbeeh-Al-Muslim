@@ -99,6 +99,10 @@
 ### Upgrades & Migrations
 - [x] `.tailorai/Tasks/migration/2026-09-07_flutter_upgrade_fixes.md` — Fixed Flutter 3.38+ upgrade issues (pubspec dependencies, case-sensitive imports, BLoC emit encapsulation, and Android NDK)
 
+### Planned Roadmap (Future Tasks)
+- [ ] `.tailorai/Tasks/feature/2026-09-29_audio_azkar_morning_evening_and_custom_scheduler.md` — Audio Morning/Evening Azkar module with wake-up/bedtime reminder triggers, dedicated continuous audio player, and custom scheduled audio reminders connected to 201+ sound library
+- [ ] `.tailorai/Tasks/feature/2026-09-29_ai_voice_assistant_and_intent_actions.md` — AI Voice Assistant & Natural Language Action Engine with Arabic speech-to-text, intent recognition (Quran playback, Azkar player, periodic dhikr scheduling, and navigation), and floating voice UI
+
 ## 4. Strict AI Operating Protocol (Always Active)
 1. **Context Isolation:** NEVER attempt to read all folders at once. Consult this `PROJECT_MAP.md` first, then request to read ONLY the specific subdirectory relevant to the current task.
 2. **Atomic Execution:** Work on ONE single sub-task at a time. Update `[ ]` to `[x]`, document technical changes, and STOP completely to prompt the user.
