@@ -1,0 +1,731 @@
+/* =========================================================
+   Tasbeeh Al Muslim - Islamic Emerald Design System
+   Matches PrivacyPolicy.html design aesthetic
+   Colors: #16a085, #27ae60, #093028, #16533f, #f9fbfb
+========================================================= */
+
+:root {
+    --primary: #16a085;
+    --primary-dark: #093028;
+    --primary-deep: #16533f;
+    --primary-light: #e8f8f5;
+    --primary-hover: #1abc9c;
+    --accent: #27ae60;
+    --accent-light: #2ecc71;
+    --accent-glow: rgba(39, 174, 96, 0.35);
+    --dark: #1b262c;
+    --text-main: #2c3e50;
+    --text-muted: #576574;
+    --bg-page: #f9fbfb;
+    --bg-card: #ffffff;
+    --border-color: #e2ece9;
+    --border-card: #e8f2ee;
+    --shadow-sm: 0 2px 10px rgba(22, 160, 133, 0.06);
+    --shadow-md: 0 8px 25px rgba(22, 160, 133, 0.12);
+    --shadow-lg: 0 15px 35px rgba(9, 48, 40, 0.18);
+    --radius-xl: 24px;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+}
+
+/* Global Typography & RTL Polish */
+body {
+    font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.banner-heading, .heading, .sub-heading, .service-card-heading, .nav-link {
+    font-family: 'Cairo', system-ui, sans-serif !important;
+}
+
+/* =========================================================
+   1. Header & Navigation (Glassmorphic / Emerald)
+========================================================= */
+header.head-sec {
+    transition: all 0.4s ease-in-out;
+}
+
+header .navbar-brand img {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px;
+    transition: transform 0.3s ease;
+}
+
+header .navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+header .nav-up .horizontal-nav li .nav-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+header .nav-up .horizontal-nav li .nav-link:hover,
+header .nav-up .horizontal-nav li .nav-link.active {
+    color: #a3e4d7 !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sticky Header State */
+.fix-top {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(9, 48, 40, 0.08) !important;
+}
+
+.fix-top .nav-up .horizontal-nav li .nav-link {
+    color: var(--dark) !important;
+}
+
+.fix-top .nav-up .horizontal-nav li .nav-link:hover,
+.fix-top .nav-up .horizontal-nav li .nav-link.active {
+    color: var(--primary) !important;
+    background: var(--primary-light) !important;
+}
+
+/* Mobile Toggle Button */
+.head-sec .navigation-toggle #toggle-btn span {
+    background-color: #ffffff;
+}
+
+.fix-top .navigation-toggle #toggle-btn span {
+    background-color: var(--dark);
+}
+
+/* Mobile Drawer */
+.broad {
+    background: linear-gradient(180deg, #093028 0%, #16533f 100%) !important;
+    color: #fff;
+}
+
+.broad .navbar-nav .nav-link {
+    font-size: 17px;
+    font-weight: 600;
+    color: #e8f8f5 !important;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.broad .navbar-nav .nav-link:hover {
+    color: #58d68d !important;
+    padding-right: 22px;
+}
+
+.broad .close-nav i {
+    color: #ffffff;
+}
+
+/* =========================================================
+   2. Hero Banner Section
+========================================================= */
+.banner-sec {
+    background: linear-gradient(135deg, #093028 0%, #124e3b 50%, #16a085 100%) !important;
+    color: #ffffff;
+    min-height: auto;
+    padding: 130px 0 90px;
+    border-bottom-left-radius: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-sec::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: var(--bg-page);
+    border-radius: 40px 40px 0 0;
+}
+
+.banner-sec .banner-details .banner-heading {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.banner-sec .banner-details .banner-heading span {
+    color: #58d68d !important;
+    text-shadow: 0 0 25px rgba(88, 214, 141, 0.4);
+}
+
+/* Hadith Quote Card */
+.hadith-quote-card {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    margin: 20px 0 28px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    text-align: right;
+    position: relative;
+}
+
+.hadith-quote-card::before {
+    content: "\f10e";
+    font-family: "Line Awesome Free";
+    font-weight: 900;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-size: 2rem;
+    color: rgba(88, 214, 141, 0.25);
+}
+
+.hadith-quote-card p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #f0fdf9;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.hadith-quote-card .hadith-answer {
+    color: #58d68d;
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+/* Web App Primary CTA */
+.btn-cta-emerald {
+    background: linear-gradient(135deg, #16a085 0%, #27ae60 100%) !important;
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    padding: 14px 32px !important;
+    border-radius: 40px !important;
+    box-shadow: 0 6px 20px var(--accent-glow) !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-cta-emerald:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(39, 174, 96, 0.5) !important;
+    color: #ffffff !important;
+}
+
+/* Modern Store Badges Row */
+.store-badges-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.store-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-md);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+}
+
+.store-badge-btn:hover {
+    background: #ffffff;
+    color: var(--primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.store-badge-btn img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+}
+
+.store-badge-btn i {
+    font-size: 1.6rem;
+}
+
+.store-badge-btn .badge-text {
+    text-align: right;
+    line-height: 1.2;
+}
+
+.store-badge-btn .badge-text small {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.8;
+}
+
+.store-badge-btn .badge-text strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+/* Banner Image Polish */
+.banner-sec .banner-img {
+    text-align: center;
+    padding: 20px;
+}
+
+.banner-sec .banner-img img {
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s ease;
+}
+
+.banner-sec .banner-img:hover img {
+    transform: scale(1.02);
+}
+
+/* =========================================================
+   3. Quick Highlights Grid (Under Hero)
+========================================================= */
+.landing-highlights {
+    max-width: 1140px;
+    margin: -35px auto 40px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.highlights-container-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.highlight-stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.highlight-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.highlight-stat-card .h-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 12px;
+}
+
+.highlight-stat-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.highlight-stat-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   4. Section Headers & Badges
+========================================================= */
+.section-badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid rgba(22, 160, 133, 0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.services-sec .services-details .heading,
+.app-clips .app-clips-details .heading,
+.app-sec .app-details .heading,
+.get-app-sec .get-app-details .heading {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    color: var(--dark) !important;
+    padding: 0 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: -0.5px;
+}
+
+.services-sec .services-details .sub-heading,
+.app-clips .app-clips-details .sub-heading,
+.app-sec .app-details .sub-heading {
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+}
+
+.services-sec .services-details .detail-text,
+.app-clips .app-clips-details .detail-text,
+.app-sec .app-details .detail-text,
+.get-app-sec .get-app-details .detail-text {
+    font-size: 1.05rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.9 !important;
+    font-weight: 400 !important;
+    max-width: 780px;
+    margin: 0 auto 35px !important;
+}
+
+/* Ayah Callout Box */
+.ayah-callout-card {
+    background: linear-gradient(135deg, #e8f8f5 0%, #f0fdf9 100%);
+    border: 1px solid #c2ece2;
+    border-right: 5px solid var(--accent);
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.ayah-callout-card p {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0e6251;
+    margin: 0;
+}
+
+/* Video Frame Polish */
+.video-responsive-wrapper {
+    max-width: 960px;
+    margin: 0 auto 50px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(9, 48, 40, 0.15);
+    border: 4px solid #ffffff;
+    background: #000;
+}
+
+.video-responsive-wrapper iframe {
+    width: 100% !important;
+    display: block;
+    border: none !important;
+    border-radius: var(--radius-xl);
+}
+
+/* =========================================================
+   5. Services Cards (Clean Floating Grid)
+========================================================= */
+.services-sec {
+    padding: 60px 0 80px !important;
+}
+
+.services-sec .our-services {
+    padding-top: 20px !important;
+}
+
+.services-sec .our-services .s-cards {
+    border: none !important;
+    padding: 14px !important;
+}
+
+.services-sec .our-services .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 36px 26px !important;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.35s ease !important;
+    height: 100%;
+}
+
+.services-sec .our-services .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.services-sec .our-services .service-card .image-holder {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, #d1f2eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px !important;
+    box-shadow: 0 4px 12px rgba(22, 160, 133, 0.12);
+    transition: transform 0.3s ease !important;
+}
+
+.services-sec .our-services .service-card:hover .image-holder {
+    transform: scale(1.1) translateY(-3px) !important;
+}
+
+.services-sec .our-services .service-card .image-holder i {
+    font-size: 32px !important;
+    color: var(--primary) !important;
+}
+
+.services-sec .our-services .service-card .service-card-heading {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: var(--dark) !important;
+    margin-bottom: 12px !important;
+}
+
+.services-sec .our-services .service-card:hover .service-card-heading {
+    color: var(--primary) !important;
+}
+
+.services-sec .our-services .service-card .service-card-detail {
+    font-size: 0.95rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.8 !important;
+    font-weight: 400 !important;
+}
+
+/* =========================================================
+   6. App Clips (Screenshots Carousel)
+========================================================= */
+.app-clips {
+    background: linear-gradient(135deg, rgba(9, 48, 40, 0.94) 0%, rgba(22, 83, 63, 0.9) 100%), url('../img/img2.jpg') center/cover no-repeat !important;
+    padding: 90px 0 !important;
+    position: relative;
+}
+
+.app-clips .app-clips-details .heading {
+    color: #ffffff !important;
+}
+
+.app-clips .app-clips-details .sub-heading {
+    color: #58d68d !important;
+}
+
+.app-clips .app-clips-details .detail-text {
+    color: #d1f2eb !important;
+}
+
+.app-clips-slider .item img {
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.app-clips-slider .item:hover img {
+    transform: scale(1.02);
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    background: #2ecc71 !important;
+}
+
+/* =========================================================
+   7. About Section & App Features
+========================================================= */
+.app-sec {
+    padding: 90px 0 !important;
+    background-color: var(--bg-page);
+}
+
+.about-intro-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 36px 40px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 50px;
+}
+
+.app-feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 26px 22px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px !important;
+    transition: all 0.3s ease;
+}
+
+.app-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.app-feature i {
+    color: var(--primary) !important;
+    font-size: 34px !important;
+    margin-bottom: 14px !important;
+    display: inline-block;
+}
+
+.app-feature h4 {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: var(--dark) !important;
+    margin-bottom: 10px !important;
+}
+
+.app-feature p {
+    font-size: 0.92rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.7 !important;
+    margin: 0;
+}
+
+/* =========================================================
+   8. Get App Section (Download)
+========================================================= */
+.get-app-sec {
+    background: linear-gradient(135deg, rgba(9, 48, 40, 0.95) 0%, rgba(18, 78, 59, 0.92) 50%, rgba(22, 160, 133, 0.88) 100%), url('../img/banner21.jpg') center/cover no-repeat !important;
+    padding: 100px 0 !important;
+    position: relative;
+}
+
+.get-app-sec .overlay {
+    display: none !important;
+}
+
+.get-app-sec .get-app-details .heading {
+    color: #ffffff !important;
+}
+
+.get-app-sec .get-app-details .sub-heading {
+    color: #58d68d !important;
+}
+
+.get-app-sec .get-app-details .detail-text {
+    color: #e8f8f5 !important;
+}
+
+.download-cards-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.download-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 1.05rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    min-width: 240px;
+    justify-content: center;
+}
+
+.download-action-btn:hover {
+    background: #ffffff;
+    color: var(--primary-dark) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.download-action-btn.web-btn {
+    background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+    border-color: #2ecc71;
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.15rem;
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.download-action-btn.web-btn:hover {
+    background: #ffffff;
+    color: var(--primary-dark) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.download-action-btn i {
+    font-size: 1.8rem;
+}
+
+/* =========================================================
+   9. Mobile Responsive Tweaks
+========================================================= */
+@media (max-width: 991px) {
+    .banner-sec {
+        padding: 100px 0 70px;
+    }
+
+    .banner-sec .banner-details .banner-heading {
+        font-size: 2.2rem;
+    }
+
+    .banner-sec .banner-img {
+        margin-top: 30px;
+    }
+
+    .landing-highlights {
+        margin-top: -25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-sec .banner-details .banner-heading {
+        font-size: 1.85rem;
+    }
+
+    .store-badges-wrap {
+        justify-content: center;
+    }
+
+    .store-badge-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .download-action-btn {
+        width: 100%;
+    }
+}

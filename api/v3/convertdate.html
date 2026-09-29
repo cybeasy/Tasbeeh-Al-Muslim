@@ -1,0 +1,787 @@
+﻿<!DOCTYPE html>
+ <!--https://www.ts3a.com/%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D8%A7%D9%84%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%85%D9%8A%D9%84%D8%A7%D8%AF%D9%8A-%D9%87%D8%AC%D8%B1%D9%8A/ -->
+<html dir="rtl" lang="ar"  >
+ 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <style>
+     
+ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%; overflow-x: hidden;}
+ body{visibility:visible !important;
+             	margin:0 auto;  overflow-x: hidden;  max-width: 100%;
+	  }
+ 
+
+ 
+ table a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+table a:visited {
+	color: #999999;
+	font-weight:bold;
+	text-decoration:none;
+}
+table a:active,
+table a:hover {
+	color: #bd5a35;
+	text-decoration:underline;
+}
+table {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:12px;
+	text-shadow: 1px 1px 0px #fff;
+	background:#eaebec;
+	margin:auto;
+	border:#ccc 1px solid;
+
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+	 
+	
+}
+table th {
+	padding:21px 25px 22px 25px;
+	border-top:1px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table th:first-child {
+	text-align: left;
+	padding-left:0px;
+}
+table tr:first-child th:first-child {
+	-moz-border-radius-topleft:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-left-radius:3px;
+}
+table tr:first-child th:last-child {
+	-moz-border-radius-topright:3px;
+	-webkit-border-top-right-radius:3px;
+	border-top-right-radius:3px;
+}
+table tr {
+	text-align: center;
+	padding-left:0px;
+}
+table td:first-child {
+	text-align: left;
+	padding-left:0px;
+	border-left: 0;
+}
+table td {
+	padding:0px;
+	border-top: 1px solid #ffffff;
+	border-bottom:1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td {
+	background: #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+	background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td {
+	border-bottom:0;
+}
+table tr:last-child td:first-child {
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child {
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+}
+table tr:hover td {
+	background: #f2f2f2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+}
+ 
+
+
+ </style>
+<title>تحويل التاريخ من ميلادي الى هجري ومن هجري الى ميلادي</title>
+<meta name="description" content="يمكنك عبر هذا النموذج تحويل التاريخ من ميلادي الى هجري وكذلك تحويل التاريخ من هجري الى ميلادي . التاريخ الهجري هو التقويم الإسلامي المعتمد.">
+ 
+ <script type="text/javascript">
+var trackScrolling=false;
+var trackScrollingPercentage=false;
+var ScrollingPercentageNumber=25;
+var stLogInterval=30*1000;
+var cutOffTime=600;
+var trackNoEvents=false;
+var trackNoMaxTime=false;
+var docTitle = 'تحويل التاريخ من ميلادي الى هجري ومن هجري الى ميلادي';
+
+</script>
+ 
+ 
+<!--<link rel="stylesheet" id="td-theme-css" href="./تحويل التاريخ من ميلادي الى هجري ومن هجري الى ميلادي_files/style.css" type="text/css" media="all">-->
+
+ 
+ 
+<!--[if lt IE 9]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+
+ <script>
+    
+var tdBlocksArray = []; //here we store all the items for the current page
+
+//td_block class - each ajax block uses a object of this class for requests
+function tdBlock() {
+    this.id = '';
+    this.block_type = 1; //block type id (1-234 etc)
+    this.atts = '';
+    this.td_column_number = '';
+    this.td_current_page = 1; //
+    this.post_count = 0; //from wp
+    this.found_posts = 0; //from wp
+    this.max_num_pages = 0; //from wp
+    this.td_filter_value = ''; //current live filter value
+    this.is_ajax_running = false;
+    this.td_user_action = ''; // load more or infinite loader (used by the animation)
+    this.header_color = '';
+    this.ajax_pagination_infinite_stop = ''; //show load more at page x
+}
+
+    
+    
+        // td_js_generator - mini detector
+        (function(){
+            var htmlTag = document.getElementsByTagName("html")[0];
+
+            if ( navigator.userAgent.indexOf("MSIE 10.0") > -1 ) {
+                htmlTag.className += ' ie10';
+            }
+
+            if ( !!navigator.userAgent.match(/Trident.*rv\:11\./) ) {
+                htmlTag.className += ' ie11';
+            }
+
+            if ( /(iPad|iPhone|iPod)/g.test(navigator.userAgent) ) {
+                htmlTag.className += ' td-md-is-ios';
+            }
+
+            var user_agent = navigator.userAgent.toLowerCase();
+            if ( user_agent.indexOf("android") > -1 ) {
+                htmlTag.className += ' td-md-is-android';
+            }
+
+            if ( -1 !== navigator.userAgent.indexOf('Mac OS X')  ) {
+                htmlTag.className += ' td-md-is-os-x';
+            }
+
+            if ( /chrom(e|ium)/.test(navigator.userAgent.toLowerCase()) ) {
+               htmlTag.className += ' td-md-is-chrome';
+            }
+
+            if ( -1 !== navigator.userAgent.indexOf('Firefox') ) {
+                htmlTag.className += ' td-md-is-firefox';
+            }
+
+            if ( -1 !== navigator.userAgent.indexOf('Safari') && -1 === navigator.userAgent.indexOf('Chrome') ) {
+                htmlTag.className += ' td-md-is-safari';
+            }
+
+        })();
+
+
+
+
+        var tdLocalCache = {};
+
+        ( function () {
+            "use strict";
+
+            tdLocalCache = {
+                data: {},
+                remove: function (resource_id) {
+                    delete tdLocalCache.data[resource_id];
+                },
+                exist: function (resource_id) {
+                    return tdLocalCache.data.hasOwnProperty(resource_id) && tdLocalCache.data[resource_id] !== null;
+                },
+                get: function (resource_id) {
+                    return tdLocalCache.data[resource_id];
+                },
+                set: function (resource_id, cachedData) {
+                    tdLocalCache.remove(resource_id);
+                    tdLocalCache.data[resource_id] = cachedData;
+                }
+            };
+        })();
+
+    
+    
+var tds_smooth_scroll=true;
+var td_viewport_interval_list=[{"limitBottom":767,"sidebarWidth":228},{"limitBottom":1018,"sidebarWidth":300},{"limitBottom":1140,"sidebarWidth":324}];
+var td_animation_stack_effect="type2";
+var tds_animation_stack=true;
+var td_animation_stack_specific_selectors=".entry-thumb, img[class*=\"wp-image-\"], a.td-sml-link-to-image > img";
+var td_animation_stack_general_selectors=".td-animation-stack .entry-thumb, .post .entry-thumb, .post img[class*=\"wp-image-\"], a.td-sml-link-to-image > img";
+var tds_general_modal_image="yes";
+var td_ajax_url="https:\/\/www.ts3a.com\/wp-admin\/admin-ajax.php?td_theme_name=Newspaper&v=6.6";
+var td_get_template_directory_uri="https:\/\/www.ts3a.com\/wp-content\/themes\/ts3acom";
+var tds_snap_menu="snap";
+var tds_logo_on_sticky="";
+var tds_header_style="5";
+var td_please_wait="\u064a\u0631\u062c\u0649 \u0627\u0644\u0627\u0646\u062a\u0638\u0627\u0631 ...";
+var td_email_user_pass_incorrect="\u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 \u0623\u0648 \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d\u0629!";
+var td_email_user_incorrect="\u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a \u0623\u0648 \u0627\u0633\u0645 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d!";
+var td_email_incorrect="\u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a \u063a\u064a\u0631 \u0635\u062d\u064a\u062d!";
+var tds_more_articles_on_post_enable="";
+var tds_more_articles_on_post_time_to_wait="";
+var tds_more_articles_on_post_pages_distance_from_top=0;
+var tds_theme_color_site_wide="#ffb72f";
+var tds_smart_sidebar="enabled";
+var tdThemeName="Newspaper";
+var td_magnific_popup_translation_tPrev="\u0627\u0644\u0633\u0627\u0628\u0642 (\u0633\u0647\u0645 \u0627\u0644\u0649 \u0627\u0644\u064a\u0633\u0627\u0631 )";
+var td_magnific_popup_translation_tNext="\u0627\u0644\u062a\u0627\u0644\u064a (\u0633\u0647\u0645 \u0627\u0644\u0649 \u0627\u0644\u064a\u0645\u064a\u0646 )";
+var td_magnific_popup_translation_tCounter="%curr% \u0645\u0646 %total%";
+var td_magnific_popup_translation_ajax_tError="\u0627\u0644\u0645\u062d\u062a\u0648\u0649 \u0645\u0646 %url% \u0644\u0627 \u064a\u0645\u0643\u0646 \u062a\u062d\u0645\u064a\u0644.";
+var td_magnific_popup_translation_image_tError="\u0644\u0627 \u064a\u0645\u0643\u0646 \u062a\u062d\u0645\u064a\u0644 \u0635\u0648\u0631\u0629 #%curr%.";
+var td_ad_background_click_link="";
+var td_ad_background_click_target="";
+</script>
+
+ 
+ 
+
+</head>
+
+ 
+<body  >
+
+ 
+      
+            <div class="wpb_raw_code wpb_raw_js">
+                <div class="wpb_wrapper">
+                    <script type="text/javascript">
+function weekDay(wdn){
+					if(wdn==0){
+						return "الاثنين"
+						}
+					if(wdn==1){
+						return "الثلاثاء"
+						}
+					if(wdn==2){
+						return "الاربعاء"
+						}
+					if(wdn==3){
+						return "الخميس"
+						}
+					if(wdn==4){
+						return "الجمعة"
+						}
+					if(wdn==5){
+						return "السبت"
+						}
+					if(wdn==6){
+						return "الاحد"
+						}
+	return ""
+
+}
+
+function isnumeric(num)
+  {
+    var strlen = num.length
+    var i
+    for ( i = 0; i < strlen ; ++i )
+    {
+      //if (!((num.charAt(i) >= '0') && (num.charAt(i)<='9') || (num.charAt(i)=='.')))
+      if (!((num.charAt(i) >= '0') && (num.charAt(i)<='9') || (num.charAt(i)=='.') || (num.charAt(i)=='-')))
+      {
+           return false;
+      }
+    }
+  }
+
+</script>
+
+                    <form name="Hijri">
+                    <center>
+                    <table  style="direction:rtl;width:100%;  ">
+                     <!-- Table Header -->
+	<thead>
+		<tr>
+			<th style="text-align:center;padding:10px"> 
+              <font size="4" >التحويل من الهجري الى الميلادي او العكس</font>
+                        
+                                    <br /> <br /> التاريخ اليوم: <script type="text/javascript">
+                                                                   var currentDate = new Date()
+                                                                   var day = currentDate.getDate()
+                                                                   var month = currentDate.getMonth() + 1
+                                                                   var year = currentDate.getFullYear()
+                                                                   document.write("<b>" + "<font color='#336699'>" + day + "/" + month + "/" + year + "</font>" + "</b>")
+							</script> 
+            </th>
+			 
+		</tr>
+	</thead>
+	<!-- Table Header -->
+
+	<!-- Table Body -->
+                        <tbody>
+                         
+                            <tr >
+                                <td  >
+                            
+
+  <table cellspacing='0' style="width:90%;margin:auto;text-align:right;direction:rtl"> <!-- cellspacing='0' is important, must stay -->
+
+	 <!-- Table Header -->
+  <thead>
+		<tr  style="padding:0px">
+			<th style="text-align:right;padding:0px;margin:0px;height:40px" colspan="2"   ><font size="4" > <b>التقويم الميلادي</b> </font> </th>
+			 
+		</tr>
+	 	</thead>
+	<!-- Table Header -->
+
+	<!-- Table Body -->
+	<tbody>
+
+		<tr class="even">
+			<td  style="padding:10px"  colspan="2"  >
+            
+            <div style="text-align:right;width:20%;float:right;margin-top:5px"> <font size="4" > <b>الشهر</font> </div> 
+                  <div style="text-align:right;width:80%;float:right"> 
+            <select name="CMonth" size="1" style=" width: 99%; padding: 5px; color: #262626; font-size: 18px; height: 34px;">
+                                                        <option value="1" selected="">01 : يناير - كانون الثاني</option>
+                                                        <option value="2">02 : فبراير - شباط</option>
+                                                        <option value="3">03 : مارس - اذار</option>
+                                                        <option value="4">04 : ابريل - نيسان</option>
+                                                        <option value="5">05 : مايو - ايار</option>
+                                                        <option value="6">06 : يونيو - حزيران</option>
+                                                        <option value="7">07 : يوليو - تموز</option>
+                                                        <option value="8">08 : اغسطس - اب</option>
+                                                        <option value="9">09 : سبتمبر - ايلول</option>
+                                                        <option value="10">10 : اكتوبر - تشرين الاول</option>
+                                                        <option value="11">11 : نوفمبر - تشرين الثاني</option>
+                                                        <option value="12">12 : ديسمبر - كانون الاول</option>
+                                                    </select>
+            </div>
+          
+             
+             </td>
+     </tr>
+           
+        <tr class="even">
+             <td style="padding:10px"  >
+               <div style="text-align:right;width:140px;float:right; "> 
+               <div style="text-align:right;width:50px;float:right;margin-top:5px"> <font size="4" > <b>اليوم</font> </div> 
+               <div style="text-align:right;width:80px;float:right"> 
+                    <select name="CDay" size="1" style=" width: 99%; padding: 5px; color: #262626; font-size: 18px; height: 34px;">
+                                                        <option value="1" selected="">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+                                                    </select>
+</div>
+                  </div>
+        </td> <td> 
+                     <div style="text-align:right;width:140px;  "><div style="text-align:right;width:50px;float:right;margin-top:8px"> <font size="4" > <b>السنة</font> </div>  
+                       <div style="text-align:right;width:50px;float:right"> 
+                     <input value="2008" name="CYear" size="6" style=" width: 97%; color: #262626; font-size: 18px; height: 30px;  ">
+                     </div>
+                     </div>
+                    </td>
+
+                    
+             </tr>
+
+
+         <tr class="even"><td colspan="2">
+                      <div style="text-align:right;margin-top:10px;text-align:center;padding-bottom:10px">  
+
+                                                                          <input onclick="GregToIsl(this.form)" class="btn btn-primary " type="button" value="التحويل من الميلادي الى الهجري" name="GtoH" style=" font-weight: bold; font-size: 18px; margin:auto ">
+                       </div>
+                     </td>  </tr>
+          
+	</tbody>
+	<!-- Table Body -->
+
+</table>
+
+
+
+
+  <table cellspacing='0' style="width:90%;margin:auto;text-align:right;direction:rtl"> <!-- cellspacing='0' is important, must stay -->
+
+	 <!-- Table Header -->
+  <thead>
+		<tr  style="padding:0px">
+			<th style="text-align:right;padding:0px;margin:0px;height:40px" colspan="2"   ><font size="4" > <b>التقويم الميلادي</b> </font> </th>
+			 
+		</tr>
+	 	</thead>
+	<!-- Table Header -->
+
+	<!-- Table Body -->
+	<tbody>
+
+		<tr class="even">
+			<td  style="padding:10px"  colspan="2"  >
+            
+            <div style="text-align:right;width:20%;float:right;margin-top:5px"> <font size="4" > <b>الشهر</font> </div> 
+                  <div style="text-align:right;width:80%;float:right"> 
+                 <select name="HMonth" size="1" style=" width: 99%; padding: 5px; color: #262626; font-size: 18px; height: 34px;">
+                                                        <option value="1" selected="">01 : محرم</option>
+                                                        <option value="2">02 : صفر</option>
+                                                        <option value="3">03 : ربيع الأول</option>
+                                                        <option value="4">04 : ربيع الثاني</option>
+                                                        <option value="5">05 : جمادى الأول</option>
+                                                        <option value="6">06 : جمادى الآخر</option>
+                                                        <option value="7">07 : رجب</option>
+                                                        <option value="8">08 : شعبان</option>
+                                                        <option value="9">09 : رمضان</option>
+                                                        <option value="10">10 : شوال</option>
+                                                        <option value="11">11 : ذو القعدة</option>
+                                                        <option value="12">12 : ذو الحجة</option>
+                                                    </select>
+            </div>
+          
+             
+             </td>
+     </tr>
+           
+        <tr class="even">
+             <td style="padding:10px"  >
+               <div style="text-align:right;width:140px;float:right; "> 
+               <div style="text-align:right;width:50px;float:right;margin-top:5px"> <font size="4" > <b>اليوم</font> </div> 
+               <div style="text-align:right;width:80px;float:right"> 
+                    <select name="HDay" size="1" style=" width: 99%; padding: 5px; color: #262626; font-size: 18px; height: 34px;">
+                                                        <option value="1" selected="">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                    </select>
+</div>
+                  </div>
+        </td> <td> 
+                     <div style="text-align:right;width:140px;  "><div style="text-align:right;width:50px;float:right;margin-top:8px"> <font size="4" > <b>السنة</font> </div>  
+                       <div style="text-align:right;width:50px;float:right"> 
+                                      <input name="HYear" size="6" style=" width: 97%; color: #262626; font-size: 18px; height: 30px;  ">
+                     </div>
+                     </div>
+                    </td>
+
+                    
+             </tr>
+
+
+         <tr class="even"><td colspan="2">
+                      <div style="text-align:right;margin-top:10px;text-align:center;padding-bottom:10px">  
+                <input onclick="IslToGreg(this.form)" type="button" class="btn btn-danger " value="التحويل من الهجري الى الميلادي" name="HtoG" style=" font-weight: bold; font-size: 18px; ">
+                       </div>
+                     </td>  </tr>
+          
+	</tbody>
+	<!-- Table Body -->
+
+</table>
+
+
+
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                <div style="margin:auto;text-align:center"> 
+                                     
+                                      <textarea name="reslut" readonly style=" border: none;  box-shadow: none;width:80%;height:50px; -moz-box-shadow: none; -webkit-box-shadow: none; outline: none;     background-color: inherit;  resize: none;font-size: 18px; text-align: center;margin-top:10px;overflow:hidden  " >  </textarea>
+                                   
+                                    <input name="wd" size="12" style="visibility: hidden" ><input style="visibility: hidden" name="JD">
+                                  
+                                    </div>
+                                    </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+
+
+                    </center>
+                    </form>
+ <script type="text/javascript">
+function intPart(floatNum){
+if (floatNum< -0.0000001){
+	 return Math.ceil(floatNum-0.0000001)
+	}
+return Math.floor(floatNum+0.0000001)
+}
+
+function GregToIsl(arg) {
+
+		if(gvalidate()==false){
+		return false
+		}
+
+	d=parseInt(arg.CDay.value)
+	m=parseInt(arg.CMonth.value)
+	y=parseInt(arg.CYear.value)
+	delta=0
+
+					if ((y>1582)||((y==1582)&&(m>10))||((y==1582)&&(m==10)&&(d>14)))
+						{
+//added delta=0 on jd to comply isna rulling 2007
+						jd=intPart((1461*(y+4800+intPart((m-14)/12)))/4)+intPart((367*(m-2-12*(intPart((m-14)/12))))/12)-
+	intPart( (3* (intPart(  (y+4900+    intPart( (m-14)/12)     )/100)    )   ) /4)+d-32075+delta
+						}
+						else
+						{
+//added +1 on jd to comply isna rulling
+						jd = 367*y-intPart((7*(y+5001+intPart((m-9)/7)))/4)+intPart((275*m)/9)+d+1729777+delta
+						}
+					arg.JD.value=jd
+//added -1 on jd1 to comply isna rulling
+					jd1=jd-delta
+					arg.wd.value=weekDay(jd1%7)
+					l=jd-1948440+10632
+					n=intPart((l-1)/10631)
+					l=l-10631*n+354
+					j=(intPart((10985-l)/5316))*(intPart((50*l)/17719))+(intPart(l/5670))*(intPart((43*l)/15238))
+					l=l-(intPart((30-j)/15))*(intPart((17719*j)/50))-(intPart(j/16))*(intPart((15238*j)/43))+29
+					m=intPart((24*l)/709)
+					d=l-intPart((709*m)/24)
+					y=30*n+j-30
+
+	arg.HDay.value=d
+	arg.HMonth.value=m
+	arg.HYear.value = y
+
+	var dayname = arg.wd.value;
+
+	var res = " يوافق : "   +  dayname + "\n" + d + "/" + m + "/" + y + " " + "هجري ";
+	arg.reslut.value = res;
+
+	alert(res);
+}
+function IslToGreg(arg) {
+
+		if(hvalidate()==false){
+		return false
+		}
+
+	d=parseInt(arg.HDay.value)
+	m=parseInt(arg.HMonth.value)
+	y=parseInt(arg.HYear.value)
+//added - delta=0 on jd to comply isna rulling
+	jd=intPart((11*y+3)/30)+354*y+30*m-intPart((m-1)/2)+d+1948440-385-delta
+	arg.JD.value=jd
+	arg.wd.value=weekDay(jd%7)
+					if (jd> 2299160 )
+						{
+						 l=jd+68569
+						 n=intPart((4*l)/146097)
+						l=l-intPart((146097*n+3)/4)
+						 i=intPart((4000*(l+1))/1461001)
+						l=l-intPart((1461*i)/4)+31
+						 j=intPart((80*l)/2447)
+						d=l-intPart((2447*j)/80)
+						l=intPart(j/11)
+						m=j+2-12*l
+						y=100*(n-49)+i+l
+						}
+					else
+						{
+						 j=jd+1402
+						 k=intPart((j-1)/1461)
+						 l=j-1461*k
+						 n=intPart((l-1)/365)-intPart(l/1461)
+						 i=l-365*n+30
+						j=intPart((80*i)/2447)
+						d=i-intPart((2447*j)/80)
+						i=intPart(j/11)
+						m=j+2-12*i
+						y=4*k+n+i-4716
+						}
+
+	arg.CDay.value=d
+	arg.CMonth.value=m
+	arg.CYear.value=y
+
+	var dayname = arg.wd.value;
+	var res = " يوافق : " + dayname + "\n" + d + "/" + m + "/" + y + " " + "ميلادي ";
+	arg.reslut.value = res;
+
+	alert(res);
+}
+</script>
+<script type="text/javascript">
+var cdays=new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+var hdays=new Array(30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29);
+
+function gvalidate()
+{
+	var yleap,d,m,y,m1,m2,m3,leap;
+	d=document.Hijri.CDay.value;
+	m=document.Hijri.CMonth.value;
+	y=document.Hijri.CYear.value;
+
+	if(document.Hijri.CYear.value=="")
+	{
+ 		alert("السنة الميلادية لا يمكن ان تكون فارغة");
+		return false;
+		document.Hijri.CYear.focus();
+	}
+
+
+	if(isnumeric(y)==false)
+	{
+		alert("السنة الميلادية يجب ان تكون بالارقام فقط")
+		document.Hijri.CYear.focus();
+		return false;
+	}
+
+	m1=y%4;
+	m2=y%100;
+	m3=y%400;
+	leap=((m==2)&&((m3==0)||((m1==0)&&(m2!=0))))?1:0;
+	if(d>(cdays[m-1]+leap))
+	{
+		alert(m+"/"+d+"/"+y+" ليس يوم ميلادي صالح.");
+		return false;
+		document.Hijri.CDay.focus();
+	}
+
+	return true;
+}
+
+</script>
+<script type="text/javascript">
+var hdays=new Array(30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29);
+function hvalidate()
+{
+	var dh,mh,yh,m1h,leaph;
+	dh=document.Hijri.HDay.value;
+	mh=document.Hijri.HMonth.value;
+	yh=document.Hijri.HYear.value;
+
+	if(document.Hijri.HYear.value=="")
+	{
+		alert("السنة الهجرية لا يمكن ان تكون فارغة");
+		return false;
+		document.Hijri.HYear.focus();
+	}
+
+	if(isnumeric(yh)==false)
+	{
+		alert("السنة الهجرية يجب ان تكون بالارقام فقط")
+		document.Hijri.HYear.focus();
+		return false;
+	}
+
+	m1h=yh%30;
+
+   //the 2nd, 5th, 7th, 10th, 13th, 16th, 18th, 21st, 24th, 26th, and 29th years are leap years.
+
+	leaph=((mh==12)&&(m1h==2||m1h==5||m1h==7||m1h==10||m1h==13||m1h==16||m1h==18||m1h==21||m1h==24||m1h==26||m1h==29))?1:0;
+	if(dh>(hdays[mh-1]+leaph))
+	{
+		alert(mh+"/"+dh+"/"+yh+" is not a valid Hijri date.");
+		return false;
+		document.Hijri.HDay.focus();
+	}
+
+	return true;
+}
+
+</script>
+                </div>
+            </div>
+
+            
+            <div style="width:90%;margin:auto" ><p style="text-align: right;">*ملاحظة 1: قد تنتج من عملية التحويل من التاريخ الهجري الى الميلادي ومن التاريخ الميلادي الى الهجري نسبة صغيرة ضئيلة لحدوث خطأ في التحويل تقدر بيوم واحد.</p>
+            <p style="text-align: right;">*ملاحظة 2: لا يمكن التحويل من التاريخ الهجري الى الميلادي ولا من الميلادي الى الهجري ما لم تقم بتعبئة النموذج بالمعطيات مثل السنة الهجرية او الميلادية كذلك يجب ان تدخل قيمة رقمية فقط.</p>
+             
+              <font color="#008000">
+                                    <center>
+                                    <span> المصدر : </span>
+                                        www.ts3a.com</center>
+                                    </font> 
+                                    <br />
+            </div>
+            
+             
+    
+           
+</body></html>

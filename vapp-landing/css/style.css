@@ -1,0 +1,992 @@
+
+
+/* ===================================
+                About
+   =================================== */
+
+/*
+    Theme Name: App Landing Page
+    Theme URI:
+    Author: Themes Industry
+    Author URI:
+    Description: One Page , Multi Parallax Template
+    Tags: One page, multi page, multipurpose, parallax, creative, html5
+
+ */
+
+/* ===================================
+          Table of Contents
+   =================================== */
+
+/*
+01 body
+02 Custom Classes
+   02-1 short codes
+   02-2 loader
+03 navigation
+04 banner
+05 services
+06 screenShots
+07 features
+08 Get App
+09 footer
+10 media query
+ */
+
+/*Table Of Contents ends */
+
+/*IMPORT GOOGLE FONT */
+/*@import url('https://fonts.googleapis.com/css?family=Raleway:300i,400,700&display=swap');*/
+/* @import url('https://fonts.googleapis.com/css?family=Cairo:400,400i,500,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Cairo:400,400i,500,700&display=swap');
+
+ 
+html{
+    scroll-behavior: smooth;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    /*background-color: #191919;*/
+}
+
+/*************************************/
+/************** LOADER CSS ***********/
+/*************************************/
+.loader{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100vh;
+    z-index: 9999999999999;
+    overflow: hidden;
+    background-color:#fff;
+}
+
+.box {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.loader-07 {
+    border: 0 solid transparent;
+    border-radius: 50%;
+    position: relative;
+    font-size: 220px;
+}
+.loader-07:before, .loader-07:after {
+    content: '';
+    border: .2em solid #ff4f5a;
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: loader-07 1s linear infinite;
+    animation: loader-07 1s linear infinite;
+    opacity: 0;
+}
+.loader-07:before {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+.loader-07:after {
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
+@-webkit-keyframes loader-07 {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes loader-07 {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/*************************************/
+/***********  Header area ***********/
+/*************************************/
+.head-sec .top-navigation{
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*z-index: 111;*/
+}
+.head-sec .top-navigation .navbar{
+    padding: 20px 0px;
+    background-color:white;
+    /*box-shadow: 1px 1px 15px #e1e1e1;*/
+}
+
+header .nav-up .horizontal-nav{
+
+}
+header .nav-up .horizontal-nav li{
+    margin-right: 15px;
+}
+header .nav-up .horizontal-nav li:last-child{
+    margin-right: 0;
+}
+header .nav-up .horizontal-nav li .nav-link{
+    color: #1f1f1f;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+}
+header .nav-up .horizontal-nav .nav-link:focus, header .nav-up .horizontal-nav  .nav-link:hover ,header .nav-up .horizontal-nav .nav-link.active{
+    color: #ff4f5a;
+}
+.head-sec .navigation-toggle ul{
+    padding-left: 0;
+    margin: auto 0;
+}
+.head-sec .navigation-toggle ul li{
+    list-style: none;
+}
+.head-sec .navigation-toggle #toggle-btn{
+    width: 45px;
+    padding: 10px;
+    border-radius: 3px;
+    /*background-color: rgba(0, 0, 0, 0.6);*/
+}
+.head-sec .navigation-toggle #toggle-btn span{
+    width: 25px;
+    /*background-color: #ffffff;*/
+    background-color: #141414;
+    height: 2px;
+    display: block;
+    margin-top: 3px;
+    -webkit-transition: .8s ease;
+    -o-transition: .8s ease;
+    transition: .8s ease;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/********************************/
+/*********** fixed nav *********/
+/********************************/
+header{
+    transition: .8s ease-in-out;
+}
+.fixed-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 11111;
+
+}
+.fix-top{
+    background-color: #ffffff;
+    position: fixed;
+    -webkit-animation-name: animationFade;
+    animation-name: animationFade;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-box-shadow: 1px 1px 15px #e1e1e1;
+    box-shadow: 1px 1px 15px #e1e1e1;
+}
+.fix-top .navbar{
+    background-color: #fff  !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    box-shadow: none !important;
+}
+
+
+@-webkit-keyframes animationFade {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@keyframes animationFade {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/*===================================
+            banner area
+=====================================*/
+.banner-sec{
+    min-height: 500px;
+    background-color: #fcedee;
+    border-bottom-left-radius: 27%;
+    /*background: url("/vapp-landing/img/img2.jpg");*/
+}
+.banner-sec .banner-details{
+    font-family: 'Cairo', sans-serif;
+    color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner-sec .banner-details .banner-inner-content{
+    /*margin-left: 30px;*/
+    margin-right: 30px;
+    /*width:85% ;*/
+}
+.banner-sec .banner-details .banner-inner-content .banner-heading{
+    font-size: 45px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+.banner-sec .banner-details .banner-inner-content .banner-heading span{
+    /*display: block;*/
+    color: #ff4f5a;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+}
+.banner-sec .banner-details .banner-inner-content .banner-text{
+    font-size: 16px;
+    font-weight: 300;
+    opacity: .8;
+    margin-bottom: 30px;
+
+}
+.banner-sec .banner-details .banner-inner-content .banner-btn{
+    padding: 10px 40px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    background-color: #1f1f1f;
+    color: #fff;
+    border-radius: 0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .8s ease;
+    border: solid 1px #1f1f1f;
+}
+.banner-sec .banner-details .banner-inner-content .banner-btn:hover{
+    background-color: #FFFFFF;
+    color: #1f1f1f;
+    border: solid 1px #FFFFFF;
+}
+.banner-sec .banner-img{
+    padding-left: 50px;
+    /*padding-right: 50px;*/
+    padding-top: 30px;
+}
+.banner-sec .banner-img img{
+    max-width: 100%;
+}
+
+/* ===================================
+    Services section css
+====================================== */
+.services-sec{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.services-sec .services-details .sub-heading{
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    color: #ff4f5a;
+    margin-bottom: 30px;
+}
+.services-sec .services-details .heading{
+    font-size:30px;
+    font-family: 'Cairo', sans-serif;
+    color: #1f1f1f;
+    font-weight: 600;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-bottom: 30px;
+}
+.services-sec .services-details .detail-text{
+    font-family: 'Cairo', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: #1f1f1f;
+    margin-bottom: 40px;
+}
+
+.services-sec .our-services{
+    padding-top: 70px;
+    overflow: hidden;
+    padding-bottom: 10px;
+
+}
+.services-sec .our-services .service-card{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    transition: .8s ease;
+}
+
+.services-sec .our-services .service-card .image-holder{
+    margin-bottom: 30px;
+    transition: .8s ease;
+
+}
+.services-sec .our-services .service-card .image-holder i{
+    font-size: 60px;
+    color: #ff4f5a;
+    transition: .8s ease;
+
+}
+.services-sec .our-services .service-card .service-card-heading{
+    font-size: 18px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: .8s ease;
+}
+.services-sec .our-services .service-card .service-card-detail {
+    font-family: 'Cairo', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: #737373;
+}
+
+.services-sec .our-services a{
+    text-decoration: none;
+    color: #000000;
+}
+.services-sec .our-services .s-cards:nth-child(even){
+    border-left: solid 1px #e1e1e1;
+}
+.services-sec .our-services .s-cards{
+    border-top: solid 1px #e1e1e1;
+    padding: 50px;
+}
+.services-sec .our-services .s-cards:nth-child(2),.services-sec .our-services .s-cards:first-child{
+    border-top: solid 1px transparent;
+}
+.services-sec .our-services .service-card:hover .service-card-heading{
+    color: #f73859;
+}
+.services-sec .our-services .service-card:hover .image-holder{
+    transform: translateY(-10px);
+}
+/* ===================================
+     App clips
+====================================== */
+.app-clips{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.app-clips .app-clips-details .sub-heading{
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    color: #ff4f5a;
+    margin-bottom: 30px;
+}
+.app-clips .app-clips-details .heading{
+    font-size:30px;
+    font-family: 'Cairo', sans-serif;
+    color: #1f1f1f;
+    font-weight: 600;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-bottom: 30px;
+}
+.app-clips .app-clips-details .detail-text{
+    font-family: 'Cairo', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: #1f1f1f;
+    margin-bottom: 40px;
+}
+/* ===================================
+    Mobile App features
+====================================== */
+.app-sec{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.app-sec .app-details{
+    margin-bottom: 50px;
+}
+.app-sec .app-details .sub-heading{
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    color: #ff4f5a;
+    margin-bottom: 30px;
+}
+.app-sec .app-details .heading{
+    font-size:30px;
+    font-family: 'Cairo', sans-serif;
+    color: #1f1f1f;
+    font-weight: 600;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-bottom: 30px;
+}
+.app-sec .app-details .detail-text{
+    font-family: 'Cairo', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: #1f1f1f;
+    margin-bottom: 40px;
+}
+
+.app-feature{
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: 'Cairo', sans-serif;
+}
+
+.app-feature:hover i{
+    transform: translateY(-5px);
+}
+
+.app-feature:last-child{
+    margin-bottom: 0;
+}
+.app-feature h4{
+    font-weight: 500;
+    font-size: 24px;
+}
+.app-feature p{
+    font-weight: 300;
+    font-size: 15px;
+}
+.app-feature i{
+    color: #ff4f5a;
+    font-size: 40px;
+    margin-bottom: 1.5rem;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.app-image {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.app-image img{
+    max-width: 280px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#app-slider{
+    position: absolute;
+    top: 50%;
+    width: 235px;
+    left: 50%;
+    height: 420px;
+    transform: translate(-50%, -50%);
+}
+/* ===================================
+    Get App Section
+====================================== */
+.get-app-sec{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    position: relative;
+}
+.get-app-sec .overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    background-color: rgba(251, 122, 130, 0.40);
+}
+.get-app-sec .get-app-details .sub-heading{
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    color: #1f1f1f;
+    margin-bottom: 30px;
+}
+.get-app-sec .get-app-details .heading{
+    font-size:30px;
+    font-family: 'Cairo', sans-serif;
+    color: #1f1f1f;
+    font-weight: 600;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-bottom: 30px;
+}
+.get-app-sec .get-app-details .detail-text{
+    font-family: 'Cairo', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: #1f1f1f;
+    margin-bottom: 80px;
+}
+.get-app-sec .get-app-details .get-app-btn{
+    display: inline-block;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #1f1f1f;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    padding: 20px 50px;
+    border: solid 1px #fff;
+    margin-right: 15px;
+    transition: .8s ease;
+}
+.get-app-sec .get-app-details .get-app-btn:last-child{
+    margin-right: 0;
+}
+.get-app-sec .get-app-details .get-app-btn:hover{
+    background-color: #1f1f1f;
+    color: #FFFFFF;
+    border: solid 1px #1f1f1f;
+}
+.get-app-sec .get-app-details .get-app-btn i{
+    font-size: 20px;
+    margin-right: 5px;
+}
+/* ===================================
+footer css
+====================================== */
+.footer-sec{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #fff;
+}
+
+.footer-sec .footer-icons a{
+    display: inline-block;
+    text-decoration: none;
+    color: #1f1f1f;
+    margin-right: 10px;
+}
+.footer-sec .footer-icons a i{
+    display: block;
+    height: 60px;
+    width: 60px;
+    font-size: 24px;
+    color: #1f1f1f;
+    line-height: 64px;
+    text-align: center;
+    border-radius: 40px;
+    background: transparent;
+    -webkit-transition: all .3s ease !important; -o-transition: all .3s ease !important; transition: all .3s ease !important;
+}
+
+.footer-sec .footer-icons a i.la-facebook-f:hover, .footer-sec .footer-icons  a i.la-facebook-f:focus {
+    color: #ffffff;
+    -webkit-box-shadow: 0 0 15px 30px #3D558F inset;
+    box-shadow: 0 0 15px 30px #3D558F inset;
+}
+.footer-sec .footer-icons a i.la-twitter:hover, .footer-sec .footer-icons  a i.la-twitter:focus {
+    color: #ffffff;
+    -webkit-box-shadow: 0 0 15px 30px #33c9dd inset;
+    box-shadow: 0 0 15px 30px #33c9dd inset;
+}
+.footer-sec .footer-icons a i.la-google:hover, .footer-sec .footer-icons  a i.la-google:focus {
+    color: #ffffff;
+    -webkit-box-shadow: 0 0 15px 30px #D74937 inset;
+    box-shadow: 0 0 15px 30px #D74937 inset;
+}
+.footer-sec .footer-icons a i.la-linkedin-in:hover, .footer-sec .footer-icons a i.la-linkedin-in:focus {
+    color: #ffffff;
+    -webkit-box-shadow: 0 0 15px 30px #0474BC inset;
+    box-shadow: 0 0 15px 30px #0474BC inset;
+}
+
+.footer-sec .footer-icons a i.la-instagram:hover, .footer-sec .footer-icons  a i.la-instagram:focus {
+    color: #ffffff;
+    background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    /*-webkit-box-shadow: 0 0 15px 30px #fd5949 inset;*/
+    /*box-shadow: 0 0 15px 30px #fd5949 inset;*/
+    animation: 1s instaRound;
+}
+.footer-sec .footer-icons a i.la-envelope:hover, .footer-sec .footer-icons  a i.la-envelope:focus {
+    color: #ffffff;
+    -webkit-box-shadow: 0 0 15px 30px #D45049 inset;
+    box-shadow: 0 0 15px 30px #D45049 inset;
+}
+
+@-webkit-keyframes instaRound {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes instaRound {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+@-webkit-keyframes ripple{
+    0%{
+        opacity:1;
+        -webkit-transform:scale(0);
+        transform:scale(0)
+    }
+    100%{
+        opacity:0;
+        -webkit-transform:scale(1);
+        transform:scale(1)
+    }
+}
+@keyframes ripple{
+    0%{
+        opacity:1;
+        -webkit-transform:scale(0);
+        transform:scale(0)
+    }
+    100%{
+        opacity:0;
+        -webkit-transform:scale(1);
+        transform:scale(1)
+    }
+}
+.intro-banner-vdo-play-btn .ripple:nth-child(2){
+    animation-delay:.3s;
+    -webkit-animation-delay:.3s
+}
+.intro-banner-vdo-play-btn .ripple:nth-child(3){
+    animation-delay:.6s;
+    -webkit-animation-delay:.6s
+}
+
+/*************************************/
+/************* Broad nav *************/
+/*************************************/
+
+header .broad{
+    display: none;
+}
+header .broad-rem{
+    -webkit-animation: .5s display-hid !important;
+    animation: .5s display-hid !important;
+}
+@-webkit-keyframes display-hid {
+    from{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    to{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+@keyframes display-hid {
+    from{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    to{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+header .broad-nav{
+    position: fixed;
+    top:0;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    background-color: #FFFFFF;
+    z-index: 99999;
+    display: block;
+    -webkit-animation: .5s display-ctrl;
+    animation:.5s display-ctrl;
+}
+@-webkit-keyframes display-ctrl {
+    from{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+@keyframes display-ctrl {
+    from{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+header .broad-nav .navbar{
+    background-color: #FFFFFF !important;
+    padding: 20px 70px !important;
+}
+header .broad-nav .close-nav{
+    position: absolute;
+    top: 6%;
+    right: 9%;
+}
+header .broad-nav .close-nav i{
+    color: #1f1f1f;
+    font-size: 30px;
+}
+header .broad-nav .navbar{
+    margin-top: 50px;
+}
+header .broad-nav .navbar .nav-item{
+    margin-bottom: 15px;
+}
+header .broad-nav .navbar .nav-item .nav-link{
+    color: #1f1f1f;
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .8s ease;
+    cursor: pointer;
+}
+header .broad-nav .navbar .nav-link:focus, header .broad-nav .navbar  .nav-link:hover ,header .broad-nav .navbar .nav-link.active{
+    color: #ff4f5a;
+}
+
+/*===================================
+           Media Query
+=====================================*/
+
+@media (max-width: 575.98px) {
+    iframe{
+        max-height:300px;
+        margin:10px;
+    }
+    /*header sec*/
+    .head-sec .top-navigation .navbar {
+        padding: 20px 30px;
+        background-color: white;
+    }
+    header .broad-nav {
+        left: 0;
+        bottom: 0;
+    }
+    header .broad-nav .navbar {
+        margin-top: 65px;
+    }
+    /*banner sec*/
+    .banner-sec {
+        padding-top: 150px;
+        padding-bottom: 40px;
+    }
+    .banner-sec .banner-details .banner-inner-content .banner-heading {
+        font-size: 40px;
+    }
+    /*services sec*/
+    .services-sec .services-details .heading {
+        font-size: 24px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .services-sec .our-services {
+        padding-top: 0;
+    }
+    .services-sec .our-services .s-cards {
+        padding-top: 0;
+        border: none;
+        padding-bottom: 0;
+        border-top: solid 1px #e1e1e100;
+    }
+    .services-sec .our-services .s-cards:nth-child(2), .services-sec .our-services .s-cards:first-child {
+        border-top: none;
+    }
+
+    .services-sec .our-services .s-cards:nth-child(even) {
+        border-left: solid 1px transparent;
+    }
+    /*app clips sec*/
+    .app-clips .app-clips-details .heading {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .app-clips .app-clips-slider{
+        width: 60%;
+        margin: auto;
+    }
+
+    /*app feature sec*/
+    .app-sec .app-details .heading {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /*#app-slider {*/
+    /*    left:41px;*/
+    /*}*/
+    /* get app sec*/
+    .get-app-sec .get-app-details .heading {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .get-app-sec .get-app-details .get-app-btn {
+
+        padding: 20px 50px;
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    /* footer sec*/
+    .footer-sec .footer-icons a i {
+        height: 30px;
+        width: 30px;
+        font-size: 18px;
+        line-height: 31px;
+
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    /*header sec*/
+    .head-sec .top-navigation .navbar {
+        padding: 20px 30px;
+        background-color: white;
+    }
+    header .broad-nav {
+        left: 0;
+        bottom: 0;
+    }
+    header .broad-nav .navbar {
+        margin-top: 65px;
+    }
+    /*banner sec*/
+    .banner-sec {
+        padding-top: 150px;
+        padding-bottom: 40px;
+    }
+    .banner-sec .banner-details .banner-inner-content .banner-heading {
+        font-size: 40px;
+    }
+    /*services sec*/
+    .services-sec .services-details .heading {
+        font-size: 24px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .services-sec .our-services {
+        padding-top: 0;
+    }
+    .services-sec .our-services .s-cards {
+        padding-top: 0;
+        border: none;
+        border-top: solid 1px #e1e1e100;
+    }
+    .services-sec .our-services .s-cards:nth-child(2), .services-sec .our-services .s-cards:first-child {
+        border-top: none;
+    }
+
+    .services-sec .our-services .s-cards:nth-child(even) {
+        border-left: solid 1px transparent;
+    }
+    /*app clips sec*/
+    .app-clips .app-clips-details .heading {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /*app feature sec*/
+    .app-sec .app-details .heading {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .get-app-sec .get-app-details .heading {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .get-app-sec .get-app-details .get-app-btn {
+
+        padding: 20px 50px;
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    /* footer sec*/
+    .footer-sec .footer-icons a i {
+        height: 40px;
+        width: 40px;
+        font-size: 20px;
+        line-height: 41px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    header .broad-nav {
+        left: 0;
+        bottom: 0;
+    }
+    header .broad-nav .navbar {
+        margin-top: 70px;
+    }
+    .banner-sec {
+        padding-top: 180px;
+        padding-bottom: 30px;
+    }
+    .get-app-sec .get-app-details .get-app-btn {
+        padding: 20px 24px;
+        font-size: 16px;
+    }
+    .app-sec .app-features-list {
+        width: 74%;
+        margin: 0 auto;
+    }
+    .services-sec .our-services .s-cards {
+        padding: 30px;
+    }
+}
+@media (min-width: 991.99px) and (max-width: 1200px) {
+    .get-app-sec .get-app-details .get-app-btn {
+        padding: 20px 30px;
+    }
+
+}

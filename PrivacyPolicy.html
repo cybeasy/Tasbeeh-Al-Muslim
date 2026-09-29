@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>سياسة الخصوصية | تطبيق تسبيح المسلم - CYBEASY</title>
+    <meta name="description" content="سياسة الخصوصية الرسمية لتطبيق وموقع تسبيح المسلم - نلتزم بحماية خصوصيتك وبياناتك وفق أعلى المعايير. تطبيق إسلامي آمن وخالٍ من جمع البيانات الشخصية.">
+    <meta name="author" content="CYBEASY">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="vapp-landing/img/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="vapp-landing/img/favicon.png?v=2">
+    <link rel="apple-touch-icon" href="vapp-landing/img/apple-touch-icon.png?v=2">
+
+    <!-- Google Fonts - Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Line Awesome Icons -->
+    <link rel="stylesheet" href="vapp-landing/css/line-awesome.min.css">
+
+    <style>
+        :root {
+            --primary: #16a085;
+            --primary-dark: #0e6251;
+            --primary-light: #e8f8f5;
+            --accent: #27ae60;
+            --accent-glow: rgba(39, 174, 96, 0.25);
+            --dark: #1b262c;
+            --text-main: #2c3e50;
+            --text-muted: #576574;
+            --bg-page: #f9fbfb;
+            --bg-card: #ffffff;
+            --border-color: #e2ece9;
+            --shadow-sm: 0 2px 8px rgba(22, 160, 133, 0.06);
+            --shadow-md: 0 8px 24px rgba(22, 160, 133, 0.1);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.85;
+            direction: rtl;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Header / Hero */
+        .policy-hero {
+            background: linear-gradient(135deg, #093028 0%, #16533f 50%, #16a085 100%);
+            color: #ffffff;
+            padding: 50px 20px 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--bg-page);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .hero-container {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .brand-box img {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .brand-text h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .brand-text span {
+            font-size: 0.85rem;
+            color: #a3e4d7;
+            font-weight: 500;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.25s ease;
+        }
+
+        .btn-nav:hover {
+            background: #ffffff;
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-nav.highlight {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-nav.highlight:hover {
+            background: #2ecc71;
+            color: #ffffff;
+        }
+
+        .hero-title-area {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(39, 174, 96, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #e8f8f5;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero-title-area h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-area p {
+            font-size: 1.1rem;
+            color: #d1f2eb;
+            max-width: 680px;
+            margin: 0 auto 16px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: #a3e4d7;
+            flex-wrap: wrap;
+        }
+
+        .meta-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Highlights Summary Bar */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-top: -30px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .highlight-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 10px;
+        }
+
+        .highlight-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .highlight-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Main Container & Content Cards */
+        .content-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .policy-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px var(--accent-glow);
+        }
+
+        .card-header-flex h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .policy-card p {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+
+        .policy-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Permission List */
+        .permissions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .permission-item {
+            background: #fafdfc;
+            border: 1px solid var(--border-color);
+            border-right: 4px solid var(--primary);
+            border-radius: 10px;
+            padding: 16px 20px;
+        }
+
+        .permission-item-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .permission-item-title i {
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .permission-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Info Alert Box */
+        .info-box {
+            background: #eafaf1;
+            border-right: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-box i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .info-box-text {
+            font-size: 0.95rem;
+            color: #196f3d;
+            line-height: 1.7;
+        }
+
+        /* Bullet Points */
+        .custom-bullet-list {
+            list-style: none;
+            margin: 14px 0;
+        }
+
+        .custom-bullet-list li {
+            position: relative;
+            padding-right: 26px;
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+            color: var(--text-main);
+        }
+
+        .custom-bullet-list li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Details Card */
+        .contact-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            background: #f4faf8;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .contact-item-text p {
+            font-size: 1rem;
+            color: var(--dark);
+            font-weight: 700;
+            margin: 0;
+            direction: ltr;
+            text-align: right;
+        }
+
+        /* Bottom Actions & Footer */
+        .bottom-nav-box {
+            text-align: center;
+            padding: 30px 20px;
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-top: 30px;
+        }
+
+        .bottom-nav-box h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-action.primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #ffffff;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .btn-action.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .btn-action.secondary {
+            background: #ffffff;
+            color: var(--primary-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-action.secondary:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        .site-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .policy-hero {
+                padding: 35px 15px 55px;
+            }
+
+            .hero-title-area h2 {
+                font-size: 1.75rem;
+            }
+
+            .policy-card {
+                padding: 22px 18px;
+            }
+
+            .card-header-flex h2 {
+                font-size: 1.15rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-top-nav {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .nav-actions {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Hero Section -->
+    <header class="policy-hero">
+        <div class="hero-container">
+            <div class="hero-top-nav">
+                <a href="index.html" class="brand-box">
+                    <img src="vapp-landing/img/logo.png" alt="شعار تسبيح المسلم">
+                    <div class="brand-text">
+                        <h1>تسبيح المسلم</h1>
+                        <span>تطبيق الأذكار والتسبيح اليومي</span>
+                    </div>
+                </a>
+                <div class="nav-actions">
+                    <a href="index.html" class="btn-nav">
+                        <i class="las la-home"></i> الرئيسية
+                    </a>
+                    <a href="./app/" target="_blank" class="btn-nav highlight">
+                        <i class="las la-globe"></i> نسخة الويب
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-title-area">
+                <div class="badge-tag">
+                    <i class="las la-shield-alt"></i> خصوصية آمنة ومحمية 100%
+                </div>
+                <h2>سياسة الخصوصية وحماية البيانات</h2>
+                <p>نحرص في تطبيق "تسبيح المسلم" على حماية خصوصيتك وبياناتك الشخصية بأعلى درجات الأمان والشفافية التامة، انطلاقاً من مسؤوليتنا الدينية والمهنية.</p>
+                <div class="meta-info">
+                    <span><i class="las la-calendar-check"></i> تاريخ السريان: 15 سبتمبر 2026</span>
+                    <span><i class="las la-building"></i> الجهة المطورة: شركة CYBEASY</span>
+                    <span><i class="las la-globe"></i> النطاق: تطبيقات الموبايل والويب</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="content-container">
+
+        <!-- Highlights Summary Bar -->
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <div class="highlight-icon"><i class="las la-user-slash"></i></div>
+                <h3>بدون تسجيل أو حساب</h3>
+                <p>استخدم جميع مميزات التطبيق والأذكار فوراً دون الحاجة لتقديم بيانات هوية أو بريد إلكتروني.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon"><i class="las la-database"></i></div>
+                <h3>تخزين محلي 100%</h3>
+                <p>عدادات تسبيحك، أذكارك المفضلة، وسجلات استغفارك تبقى آمنة على جهازك فقط ولا تُرفع لسيرفراتنا.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon"><i class="las la-ban"></i></div>
+                <h3>لا نبيع بياناتك أبداً</h3>
+                <p>لا نقوم ببيع أو تأجير أو مشاركة أي بيانات تخص المستخدمين مع أي جهات تسويقية أو تجارية مطلقاً.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon"><i class="las la-child"></i></div>
+                <h3>مناسب للأسرة والأطفال</h3>
+                <p>محتوى ديني نقي وآمن تماماً لجميع الفئات العمرية ومتوافق مع معايير COPPA وGDPR الدولية.</p>
+            </div>
+        </div>
+
+        <!-- 1. Introduction -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-info-circle"></i></div>
+                <h2>1. المقدمة والتعريف بالتطبيق</h2>
+            </div>
+            <p>
+                أهلاً بك في تطبيق <strong>"تسبيح المسلم" (Tasbeeh Al Muslim)</strong>، المطور والمُدار بواسطة شركة <strong>CYBEASY</strong>. تم تصميم هذا التطبيق ليكون رفيقاً إيمانياً للمسلم يعينه على ذكر الله تعالى، والتسبيح، والاستغفار، وقراءة الأذكار النبوية اليومية، والاستماع إلى التسجيلات الصوتية للأذكار والرقية الشرعية ومتابعة مواقيت الصلاة والتقويم الهجري.
+            </p>
+            <p>
+                توضح هذه الصفحة سياساتنا المتعلقة بجمع واستخدام وحماية المعلومات عند استخدامك لتطبيقنا على أنظمة تشغيل الهواتف الذكية (Android وiOS) أو عبر موقعنا ونسخة الويب (Web App). باستخدامك للتطبيق، فإنك توافق على الممارسات الموضحة في هذه السياسة.
+            </p>
+            <div class="info-box">
+                <i class="las la-check-circle"></i>
+                <div class="info-box-text">
+                    <strong>رسالتنا:</strong> هدفنا الأسمى هو تيسير ذكر الله لكل مسلم في كل وقت ومكان، مع الالتزام التام بعدم انتهاك خصوصية أي مستخدم، وتقديم خدمة إسلامية خالصة ومجانية وموثوقة.
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. Data Collection & Personal Info -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-user-shield"></i></div>
+                <h2>2. جمع واستخدام البيانات الشخصية</h2>
+            </div>
+            <p>
+                <strong>نحن لا نطلب ولا نجمع أي بيانات شخصية حساسة تحدد هويتك بشكل مباشر:</strong>
+            </p>
+            <ul class="custom-bullet-list">
+                <li><strong>عدم الحاجة لإنشاء حساب:</strong> لا يتطلب التطبيق إدخال اسمك، بريدك الإلكتروني، رقم هاتفك، أو أي كلمة مرور لاستخدامه.</li>
+                <li><strong>عدم الوصول للبيانات الحساسة:</strong> لا يصل التطبيق إلى جهات اتصالك، صورك، رسائلك الشخصية، ملفاتك، أو سجل مكالماتك.</li>
+                <li><strong>تخزين الإنجازات والعدادات:</strong> جميع أعداد التسبيح، وأوراد الاستغفار، والتسجيلات المفضلة، وإعدادات المؤقت يتم تخزينها محلياً على قاعدة بيانات جهازك (SQLite Database / SharedPreferences / LocalStorage) ولا يتم رفعها أو مزامنتها مع خوادم سحابية خارجية دون إذنك.</li>
+            </ul>
+        </article>
+
+        <!-- 3. App Permissions -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-key"></i></div>
+                <h2>3. الأذونات والصلاحيات المطلوبة في التطبيق</h2>
+            </div>
+            <p>
+                لتقديم وظائف التطبيق بكفاءة، قد يطلب التطبيق بعض الصلاحيات البرمجية من نظام التشغيل. نوضح هنا بكل شفافية الغرض الفني لكل إذن:
+            </p>
+
+            <div class="permissions-list">
+                <div class="permission-item">
+                    <div class="permission-item-title">
+                        <i class="las la-bell"></i>
+                        <span>إذن الإشعارات والتنبيهات (POST_NOTIFICATIONS)</span>
+                    </div>
+                    <p>
+                        <strong>الغرض:</strong> إرسال تنبيهات التذكير بالأذكار الدورية (مثل أذكار الصباح والمساء، أذكار النوم، والتذكير بالصلاة على النبي ﷺ) وفق المواعيد التي تحددها بنفسك في الإعدادات. يمكنك إلغاء أو تخصيص هذا الإذن في أي وقت من شاشة إعدادات التطبيق أو إدارة التطبيقات بهاتفك.
+                    </p>
+                </div>
+
+                <div class="permission-item">
+                    <div class="permission-item-title">
+                        <i class="las la-volume-up"></i>
+                        <span>إذن التشغيل بالخلفية والخدمة الأمامية (FOREGROUND_SERVICE & WAKE_LOCK)</span>
+                    </div>
+                    <p>
+                        <strong>الغرض:</strong> ضمان استمرار تشغيل الأذكار الصوتية، التلاوات، والتنبيهات الصوتية دون تقطيع عند قفل شاشة الهاتف أو الانتقال لتطبيق آخر، مما يضمن تجربة استماع هادئة ومستمرة للذكر.
+                    </p>
+                </div>
+
+                <div class="permission-item">
+                    <div class="permission-item-title">
+                        <i class="las la-hdd"></i>
+                        <span>إذن التخزين المحلي (Local Storage & SQLite)</span>
+                    </div>
+                    <p>
+                        <strong>الغرض:</strong> حفظ قاعدة بيانات الأذكار والأحاديث الصحيحة محلياً لتمكينك من قراءة الأذكار واستخدام عداد التسبيح في أي وقت دون الحاجة للاتصال بالإنترنت، وحفظ الورد اليومي ومستوى تقدمك في الذكر.
+                    </p>
+                </div>
+
+                <div class="permission-item">
+                    <div class="permission-item-title">
+                        <i class="las la-map-marker-alt"></i>
+                        <span>إذن الموقع الجغرافي التقريبي أو الدقيق (Location - اختياري)</span>
+                    </div>
+                    <p>
+                        <strong>الغرض:</strong> يُطلب هذا الإذن فقط وحصرياً إذا رغبت في استخدام ميزة حساب مواقيت الصلاة التلقائية وتحديد اتجاه القبلة بدقة وفق موقعك الجغرافي. تُجرى هذه الحسابات الرياضية محلياً على جهازك، ولا نقوم بتسجيل موقعك الجغرافي أو تتبع تحركاتك أو إرسال إحداثياتك لأي خادم خارجي.
+                    </p>
+                </div>
+
+                <div class="permission-item">
+                    <div class="permission-item-title">
+                        <i class="las la-wifi"></i>
+                        <span>إذن الاتصال بالإنترنت وحالة الشبكة (INTERNET & ACCESS_NETWORK_STATE)</span>
+                    </div>
+                    <p>
+                        <strong>الغرض:</strong> تحميل الملفات الصوتية عند الطلب إذا لم تكن مخزنة مسبقاً، وتحديث مواقيت الصلاة، وتلقي التحديثات البرمجية الدورية للتطبيق.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4. Web Version & Cookies -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-globe-americas"></i></div>
+                <h2>4. نسخة الويب وملفات تعريف الارتباط (Cookies)</h2>
+            </div>
+            <p>
+                عند تشغيل تطبيق "تسبيح المسلم" عبر متصفح الويب (Progressive Web App):
+            </p>
+            <ul class="custom-bullet-list">
+                <li>نستخدم التخزين المحلي للمتصفح (HTML5 LocalStorage / IndexedDB) للاحتفاظ ببيانات التسبيح والتفضيلات (مثل المظهر الليلي وحجم الخط) لتعمل معك باستمرار عند إعادة فتح المتصفح.</li>
+                <li>قد نستخدم ملفات تعريف الارتباط التقنية المجهولة لتحسين سرعة تحميل الصفحات وتأمين الموقع ضد الهجمات الإلكترونية.</li>
+                <li>لا نستخدم أي ملفات تتبع إعلانية متطفلة تتبع نشاطك خارج نطاق موقعنا.</li>
+            </ul>
+        </article>
+
+        <!-- 5. Third-Party Services & Diagnostics -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-tools"></i></div>
+                <h2>5. خدمات الطرف الثالث والتحليلات الفنية</h2>
+            </div>
+            <p>
+                لضمان استقرار التطبيق والتحقق من عمله دون مشاكل برمجية على آلاف الأجهزة المختلفة، قد نستخدم خدمات فنية معتمدة عالمياً مقدمة من أطراف ثالثة:
+            </p>
+            <ul class="custom-bullet-list">
+                <li><strong>خدمات Google Play وApple App Store:</strong> لتسهيل عمليات التثبيت والتحديث التلقائي للتطبيق.</li>
+                <li><strong>Firebase Crashlytics & Analytics (مجهولة المصدر):</strong> في حال حدوث توقف مفاجئ للتطبيق (App Crash)، يتم إرسال تقرير فني مجهول الهوية يحتوي على تفاصيل الخطأ البرمجي، طراز الجهاز، وإصدار نظام التشغيل لمساعدة فريق التطوير على إصلاحه. هذه التقارير خالية تماماً من أي معلومات شخصية تحدد هويتك.</li>
+            </ul>
+            <p>
+                يمكنك الاطلاع على سياسات الخصوصية لهذه الشركات عبر روابطها الرسمية:
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">سياسة خصوصية Google</a>.
+            </p>
+        </article>
+
+        <!-- 6. Children’s Privacy -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-baby"></i></div>
+                <h2>6. خصوصية الأطفال والأسرة (COPPA & GDPR)</h2>
+            </div>
+            <p>
+                تطبيق "تسبيح المسلم" تطبيق أسري ديني موجه لجميع أفراد العائلة المسلمة بمختلف أعمارهم بما في ذلك الأطفال الصغار لتعليمهم الأذكار والتسبيح اليومي.
+            </p>
+            <p>
+                امتثالاً لقانون حماية خصوصية الأطفال على الإنترنت (COPPA) واللائحة العامة لحماية البيانات (GDPR)، فإننا <strong>لا نجمع عمداً أي بيانات تعريف شخصية من الأطفال دون سن 13 عاماً</strong> (أو السن القانوني المعمول به في دولتك). إذا كنت ولي أمر وعلمت أن طفلك قد زودنا بمعلومات دون موافقتك، يرجى مراسلتنا فوراً لاتخاذ الإجراءات اللازمة.
+            </p>
+        </article>
+
+        <!-- 7. Data Security -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-lock"></i></div>
+                <h2>7. أمن وسلامة البيانات</h2>
+            </div>
+            <p>
+                نقدر ثقتك في استخدام تطبيقنا، ولذلك نطبق بروتوكولات حماية مشددة ومعايير تقنية رائدة، بما في ذلك:
+            </p>
+            <ul class="custom-bullet-list">
+                <li>تشفير جميع الاتصالات الشبكية باستخدام بروتوكول نقل النص الفائق الآمن (HTTPS مع شهادات SSL/TLS حديثة).</li>
+                <li>حماية الشيفرة البرمجية وتأمين بنية التطبيق البرمجية لمنع أي ثغرات أو محاولات وصول غير مصرح بها.</li>
+                <li>الاعتماد على بيئة تشغيل معزولة (Sandboxed Storage) يوفرها نظاما Android وiOS لحماية بياناتك المحلية على الجهاز.</li>
+            </ul>
+        </article>
+
+        <!-- 8. User Rights & Data Deletion -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-sliders-h"></i></div>
+                <h2>8. حقوق المستخدم والتحكم في البيانات</h2>
+            </div>
+            <p>
+                لك كامل السيطرة والحرية في إدارة استخدامك للتطبيق:
+            </p>
+            <ul class="custom-bullet-list">
+                <li><strong>إعادة ضبط وتصفير العدادات:</strong> يمكنك في أي وقت تصفير عدادات الذكر والاستغفار من داخل شاشات التطبيق مباشرة.</li>
+                <li><strong>حذف البيانات بالكامل:</strong> نظراً لأن بياناتك مخزنة محلياً على جهازك، فإن إلغاء تثبيت التطبيق أو إجراء "مسح البيانات" (Clear Data) من إعدادات جهازك يؤدي فوراً إلى إزالة وحذف كافة أرقام التسبيح والإعدادات الشخصية بشكل نهائي ودائم.</li>
+                <li><strong>تعطيل الأذونات:</strong> يمكنك سحب أي إذن (مثل الإشعارات أو الموقع) من خلال إعدادات هاتفك في أي وقت دون التأثير على عمل وظائف التسبيح الأساسية.</li>
+            </ul>
+        </article>
+
+        <!-- 9. Changes to this Policy -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-history"></i></div>
+                <h2>9. التعديلات على سياسة الخصوصية</h2>
+            </div>
+            <p>
+                قد نقوم بتحديث سياسة الخصوصية الخاصة بنا من حين لآخر لمواكبة التحديثات البرمجية في التطبيق أو استجابةً للمتطلبات القانونية والتنظيمية الجديدة لمتاجر التطبيقات.
+            </p>
+            <p>
+                ننصحك بمراجعة هذه الصفحة بشكل دوري للاطلاع على أي تغييرات. تصبح التعديلات سارية المفعول فور نشرها مباشرة على هذه الصفحة، مع تعديل "تاريخ السريان" الموجود في أعلى الصفحة.
+            </p>
+        </article>
+
+        <!-- 10. Contact Us -->
+        <article class="policy-card">
+            <div class="card-header-flex">
+                <div class="section-icon"><i class="las la-envelope-open-text"></i></div>
+                <h2>10. معلومات التواصل والدعم الفني</h2>
+            </div>
+            <p>
+                إذا كانت لديك أي استفسارات، اقتراحات، أو أسئلة بخصوص سياسة الخصوصية أو ممارسات حماية البيانات في تطبيق "تسبيح المسلم"، يسعدنا تواصلك معنا مباشرة عبر قنوات الاتصال الرسمية الخاصة بشركة <strong>CYBEASY</strong>:
+            </p>
+
+            <div class="contact-box">
+                <a href="mailto:info@cybeasy.com" class="contact-item">
+                    <div class="contact-item-icon"><i class="las la-envelope"></i></div>
+                    <div class="contact-item-text">
+                        <h4>البريد الإلكتروني الرسمي</h4>
+                        <p>info@cybeasy.com</p>
+                    </div>
+                </a>
+
+                <a href="https://www.cybeasy.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <div class="contact-item-icon"><i class="las la-globe"></i></div>
+                    <div class="contact-item-text">
+                        <h4>الموقع الإلكتروني الرسمي</h4>
+                        <p>www.cybeasy.com</p>
+                    </div>
+                </a>
+            </div>
+        </article>
+
+        <!-- Bottom Navigation & Action Card -->
+        <div class="bottom-nav-box">
+            <h3>حمّل تطبيق تسبيح المسلم أو استخدمه عبر الويب الآن</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+                شارك في نشر الخير واجعل لسانك رطباً بذكر الله في كل لحظة.
+            </p>
+            <div class="bottom-buttons">
+                <a href="index.html" class="btn-action secondary">
+                    <i class="las la-arrow-right"></i> العودة للصفحة الرئيسية
+                </a>
+                <a href="./app/" target="_blank" class="btn-action primary">
+                    <i class="las la-play-circle"></i> تشغيل نسخة الويب
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="hero-container">
+            <p>
+                جميع الحقوق محفوظة © 2026 تطبيق <strong>تسبيح المسلم</strong> — تطوير وإدارة شركة <a href="https://www.cybeasy.com" target="_blank" rel="noopener noreferrer">CYBEASY</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 0.82rem; color: #8395a7;">
+                تطبيق إسلامي مجاني لوجه الله تعالى • حماية وخصوصية تامة
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
