@@ -3,9 +3,10 @@
 > Tasks currently being worked on. When a task is fully completed, move it to `PROJECT_MAP.md` and remove it from here.
 
 ## In Progress
-- [ ] `.tailorai/Tasks/bugfix/2026-09-19_fix_tawba_screen_buttons_touch_and_navigation.md`
+- [ ] `.tailorai/Tasks/release/2026-09-29_release_v1_0_21_25_merge_to_main.md`
 
 ## Recently Completed
+- [x] `.tailorai/Tasks/bugfix/2026-09-19_fix_tawba_screen_buttons_touch_and_navigation.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-18_fix_schedule_notifications_stop_hang_and_navigate_home.md`
 - [x] `.tailorai/Tasks/bugfix/2026-09-18_fix_azkar_creation_navigate_back_to_home.md`
 - [x] `.tailorai/Tasks/feature/2026-09-18_disable_notification_auto_open_and_home_random_hadith_popup.md`

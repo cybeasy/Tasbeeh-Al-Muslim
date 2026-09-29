@@ -16,7 +16,7 @@
 - [x] [Step 1: Refactor `button` in `TawbaScreen.dart` to place `InkWell` inside `Card` with ripple feedback, and pass `context: context` to `AppRoutes.openAction`]
 - [x] [Step 2: Refactor `cell` in `listViewScreen.dart` to place `onTap` on `ListTile` inside `Card` and pass `context: context` to `AppRoutes.openAction`]
 - [x] [Step 3: Convert `player` in `main.dart` to lazy initialization `_globalPlayer ??= AudioPlayer()` to prevent `LateInitializationError`]
-- [ ] [Step 4: Verify with `dart analyze` and test on Android Emulator]
+- [x] [Step 4: Verify with `dart analyze` and test on Android Emulator]
 
 ## 3. Implementation Reality & Audit Log
 - **Step 1 (Completed 2026-09-19):**
@@ -34,3 +34,5 @@
   - Updated `code/lib/main.dart` replacing `late final AudioPlayer player;` with `AudioPlayer? _globalPlayer; AudioPlayer get player => _globalPlayer ??= AudioPlayer();`.
   - Eliminated `LateInitializationError` across all screens accessing `player` (`AudioPlayerScreen`, `RunTawbaScreen`, etc.).
   - Verified with `dart analyze code/lib/main.dart`: 0 errors.
+- **Step 4 (Completed 2026-09-29):**
+  - Verified on target device/emulator and confirmed by user as verified production release.
